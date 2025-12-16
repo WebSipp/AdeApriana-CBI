@@ -2,891 +2,926 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pak Ade Apriana - Marketing & Kepala Cabang PT CBI Palembang | Layanan Analisis Lingkungan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>PT. Chemviro Buana Indonesia - Cabang Palembang</title>
+    <link rel="icon" type="image/x-icon" href="#">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* ===== CSS VARIABLES ===== */
         :root {
-            --primary: #0a2463;
-            --primary-light: #1e40af;
-            --secondary: #3b82f6;
-            --accent: #10b981;
-            --light: #f8fafc;
-            --dark: #1e293b;
-            --text: #334155;
-            --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            --radius: 12px;
-            --transition: all 0.3s ease;
+            --primary-green: #1a7553;
+            --secondary-green: #2e8b66;
+            --light-green: #e8f5f0;
+            --primary-blue: #2c5aa0;
+            --light-blue: #e8f0fe;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --accent-orange: #f57c00;
         }
         
-        /* ===== RESET & BASE STYLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        html {
-            scroll-behavior: smooth;
-        }
-        
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark-gray);
             line-height: 1.6;
-            color: var(--text);
-            background-color: #fff;
             overflow-x: hidden;
         }
         
         h1, h2, h3, h4, h5 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1.3;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--secondary);
-            border-radius: 2px;
-        }
-        
-        .section-title p {
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* ===== BUTTONS ===== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px 28px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: var(--radius);
+            font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1rem;
-            box-shadow: var(--shadow);
         }
         
-        .btn:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .btn-secondary {
-            background: var(--secondary);
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .btn-secondary:hover {
-            background: #2563eb;
+        @keyframes ripple {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(4); opacity: 0; }
         }
         
-        .btn-accent {
-            background: var(--accent);
+        /* Smooth transitions */
+        .btn, .nav-link, .division-tab, .parameter-card, .team-card, .brand-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
-        .btn-accent:hover {
-            background: #0da271;
-        }
-        
-        /* ===== HEADER ===== */
-        header {
-            background: white;
-            box-shadow: var(--shadow);
+        /* Header & Navigation */
+        .navbar {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            padding: 15px 0;
+            animation: fadeIn 0.5s ease-out;
         }
         
-        .navbar {
+        .navbar-brand {
             display: flex;
-            justify-content: space-between;
             align-items: center;
         }
         
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        
-        .logo-img {
-            height: 45px;
-            width: auto;
+            height: 50px;
+            margin-right: 10px;
             object-fit: contain;
         }
         
-        .logo-text {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 1.4rem;
-            color: var(--primary);
+        .brand-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-green);
         }
         
-        .logo-text span {
-            color: var(--secondary);
+        .brand-subtext {
+            font-size: 0.8rem;
+            color: var(--medium-gray);
+            line-height: 1.2;
         }
         
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            font-size: 1rem;
-            padding: 5px 0;
-            position: relative;
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            bottom: 0;
-            left: 0;
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary);
-        }
-        
-        /* ===== HERO SECTION ===== */
-        .hero {
-            background: linear-gradient(135deg, rgba(10, 36, 99, 0.9) 0%, rgba(30, 64, 175, 0.9) 100%);
-            color: white;
-            padding: 180px 0 100px;
-            margin-top: 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
-            opacity: 0.2;
-            z-index: 0;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .profile-hero-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 4px solid white;
-            object-fit: cover;
-            margin: 0 auto 25px;
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .hero h1 {
-            color: white;
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-        }
-        
-        .hero h2 {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.6rem;
-            margin-bottom: 20px;
+        .nav-link {
             font-weight: 500;
+            color: var(--dark-gray) !important;
+            margin: 0 5px;
+            position: relative;
+            padding: 8px 12px !important;
+            border-radius: 4px;
         }
         
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            opacity: 0.9;
+        .nav-link:hover {
+            color: var(--primary-green) !important;
+            background-color: var(--light-green);
+            transform: translateY(-2px);
         }
         
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
+        .nav-link.active {
+            color: var(--primary-green) !important;
+            font-weight: 600;
+            background-color: rgba(26, 117, 83, 0.1);
         }
         
-        /* ===== PROFILE SECTION ===== */
-        .profile-section {
-            background: var(--light);
-        }
-        
-        .profile-card {
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
+        /* Button hover effects */
+        .btn {
+            position: relative;
             overflow: hidden;
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            max-width: 1000px;
-            margin: 0 auto;
+            transform: translateY(0);
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
+        /* Ripple effect for buttons */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.7);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, var(--light-green) 0%, #d4eae1 100%);
+            animation: fadeIn 0.8s ease-out;
         }
         
         .profile-image {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .hero-title {
+            color: var(--primary-green);
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+        
+        .slogan {
+            font-size: 1.1rem;
+            color: var(--accent-orange);
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .hero-contact {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 20px;
+            animation: fadeInUp 0.6s ease-out 0.6s both;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .contact-icon {
+            background-color: var(--light-green);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px;
+            margin-right: 15px;
+            color: var(--primary-green);
+            transition: transform 0.3s, background-color 0.3s;
         }
         
-        .profile-img-main {
-            width: 100%;
-            max-width: 250px;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: var(--shadow-lg);
-            object-fit: cover;
+        .contact-icon:hover {
+            transform: scale(1.1);
+            background-color: var(--primary-green);
+            color: white;
         }
         
-        .profile-details {
-            padding: 40px;
+        /* Clickable contact links */
+        .contact-link {
+            color: inherit;
+            text-decoration: none;
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s, transform 0.2s;
         }
         
-        .profile-details h2 {
-            margin-bottom: 20px;
-            color: var(--primary);
+        .contact-link:hover {
+            background-color: rgba(26, 117, 83, 0.1);
+            transform: translateY(-2px);
         }
         
-        .profile-details p {
+        .contact-link:active {
+            transform: scale(0.98);
+        }
+        
+        /* Section Styling */
+        .section-title {
+            color: var(--primary-green);
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-green);
+        }
+        
+        section {
+            padding: 80px 0;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .section-light {
+            background-color: var(--light-gray);
+        }
+        
+        /* Company Profile */
+        .company-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .company-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .vision-mission {
+            background-color: var(--light-blue);
+            border-left: 4px solid var(--primary-blue);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            transition: transform 0.3s;
+        }
+        
+        .vision-mission:hover {
+            transform: translateX(5px);
+        }
+        
+        .timeline-badge {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 600;
             margin-bottom: 15px;
-            line-height: 1.7;
+            animation: fadeIn 0.6s ease-out;
         }
         
-        .profile-tags {
+        /* Location Cards */
+        .location-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-green);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .location-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .location-card.main-office {
+            border-left-color: var(--primary-blue);
+        }
+        
+        .location-title {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .location-title i {
+            margin-right: 10px;
+        }
+        
+        /* Divisi Layanan */
+        .division-nav {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 25px;
+            animation: fadeIn 0.6s ease-out;
         }
         
-        .tag {
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--secondary);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        
-        /* ===== WORKFLOW SECTION ===== */
-        .workflow-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .step {
-            background: white;
-            padding: 35px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+        .division-tab {
+            padding: 18px 20px;
+            border: none;
+            background: none;
+            font-weight: 500;
+            cursor: pointer;
+            flex: 1;
             text-align: center;
-            transition: var(--transition);
-            border: 1px solid var(--border);
-        }
-        
-        .step:hover {
-            transform: translateY(-5px);
-            border-color: var(--secondary);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .step-number {
-            background: var(--primary);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+            min-width: 150px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 20px;
-        }
-        
-        .step h3 {
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-        
-        .step p {
-            color: #64748b;
-        }
-        
-        /* ===== CONFIGURATOR SECTION ===== */
-        .configurator-section {
-            background: var(--light);
-            padding-bottom: 50px;
-        }
-        
-        .configurator-container {
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
+            position: relative;
             overflow: hidden;
         }
         
-        .configurator-header {
-            background: var(--primary);
-            color: white;
-            padding: 25px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .configurator-header h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0;
-        }
-        
-        .total-price {
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-        
-        .configurator-steps {
-            display: flex;
-            border-bottom: 1px solid var(--border);
-            background: #f8fafc;
-        }
-        
-        .step-tab {
-            flex: 1;
-            text-align: center;
-            padding: 20px 15px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-            border-right: 1px solid var(--border);
-            position: relative;
-        }
-        
-        .step-tab:last-child {
-            border-right: none;
-        }
-        
-        .step-tab.active {
-            background: white;
-            color: var(--primary);
-        }
-        
-        .step-tab.active::after {
+        .division-tab:after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             height: 3px;
-            background: var(--primary);
+            background-color: var(--primary-green);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
         }
         
-        .step-tab.completed {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--accent);
+        .division-tab:hover {
+            background-color: var(--light-green);
+            transform: translateY(-2px);
         }
         
-        .step-content {
-            padding: 40px;
-            min-height: 500px;
+        .division-tab:hover:after {
+            transform: translateX(0);
         }
         
-        .step-panel {
+        .division-tab.active {
+            background-color: var(--primary-green);
+            color: var(--white);
+            transform: translateY(0);
+        }
+        
+        .division-tab.active:after {
+            transform: translateX(0);
+            background-color: var(--white);
+        }
+        
+        .division-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .division-tab:hover .division-icon {
+            transform: scale(1.2);
+        }
+        
+        .division-content {
             display: none;
+            animation: fadeIn 0.5s;
         }
         
-        .step-panel.active {
+        .division-content.active {
             display: block;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.5s;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .service-list {
+            list-style-type: none;
+            padding-left: 0;
         }
         
-        .category-grid {
+        .service-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+            transition: transform 0.2s;
+        }
+        
+        .service-list li:hover {
+            transform: translateX(5px);
+        }
+        
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .service-list i {
+            color: var(--primary-green);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        .brand-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
+            margin-top: 20px;
         }
         
-        .category-card {
-            background: white;
-            border: 2px solid var(--border);
-            border-radius: var(--radius);
-            padding: 25px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-        }
-        
-        .category-card:hover {
-            border-color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-        
-        .category-card.selected {
-            border-color: var(--primary);
-            background: rgba(10, 36, 99, 0.05);
-        }
-        
-        .category-icon {
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .category-card h3 {
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .category-card p {
-            font-size: 0.9rem;
-            color: #64748b;
-            margin-bottom: 10px;
-        }
-        
-        .parameters-container {
-            max-height: 500px;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-        
-        .parameter-group {
-            background: #f8fafc;
-            border-radius: var(--radius);
-            padding: 25px;
-            margin-bottom: 25px;
-            border-left: 4px solid var(--secondary);
-        }
-        
-        .parameter-group h4 {
-            margin-bottom: 20px;
-            color: var(--dark);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .select-all {
-            font-size: 0.9rem;
-            color: var(--secondary);
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        
-        .select-all:hover {
-            color: var(--primary);
-        }
-        
-        .parameter-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 15px;
-        }
-        
-        .parameter-item {
-            background: white;
-            border: 1px solid var(--border);
+        .brand-card {
+            background-color: var(--white);
             border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .brand-logo {
+            height: 40px;
+            margin-bottom: 10px;
+            object-fit: contain;
+        }
+        
+        /* Price Table Section */
+        .price-table-section {
+            background: linear-gradient(135deg, var(--light-blue) 0%, #d9e6ff 100%);
+        }
+        
+        .price-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .table-responsive {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            animation: fadeIn 0.6s ease-out 0.2s both;
+        }
+        
+        .table thead {
+            background-color: var(--primary-green);
+            color: white;
+        }
+        
+        .table th {
+            border: none;
             padding: 15px;
-            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .table td {
+            padding: 12px 15px;
+            vertical-align: middle;
+        }
+        
+        .badge-inlab {
+            background-color: #17a2b8;
+            color: white;
+        }
+        
+        .badge-subkon {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        /* Package Info Styling */
+        .package-summary {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: var(--white);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(26, 117, 83, 0.2);
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .package-price-big {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .package-details {
+            background-color: var(--light-green);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid var(--primary-green);
+            animation: fadeIn 0.6s ease-out 0.1s both;
+        }
+        
+        .package-details ul {
+            margin-bottom: 0;
+        }
+        
+        /* Price Explanation Text - NEW */
+        .price-explanation {
+            background-color: rgba(26, 117, 83, 0.05);
+            border-left: 3px solid var(--accent-orange);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            animation: fadeIn 0.6s ease-out 0.2s both;
+        }
+        
+        .price-explanation i {
+            color: var(--accent-orange);
+            margin-right: 8px;
+        }
+        
+        /* Parameter Cards for Mobile */
+        .parameter-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-green);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.4s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .parameter-card:nth-child(odd) {
+            animation-delay: 0.1s;
+        }
+        
+        .parameter-card:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+        
+        .parameter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .parameter-card:active {
+            transform: scale(0.98);
+        }
+        
+        .parameter-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-        }
-        
-        .parameter-item:hover {
-            border-color: var(--secondary);
-        }
-        
-        .parameter-item.selected {
-            border-color: var(--primary);
-            background: rgba(10, 36, 99, 0.05);
-        }
-        
-        .parameter-info {
-            flex: 1;
-            margin-right: 15px;
+            align-items: flex-start;
+            margin-bottom: 10px;
         }
         
         .parameter-name {
             font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 5px;
-        }
-        
-        .parameter-details {
-            font-size: 0.85rem;
-            color: #64748b;
-        }
-        
-        .parameter-price {
-            font-weight: 700;
-            color: var(--primary);
-            white-space: nowrap;
-        }
-        
-        .parameter-checkbox {
-            width: 20px;
-            height: 20px;
-            margin-right: 15px;
-            accent-color: var(--primary);
-            cursor: pointer;
-        }
-        
-        .summary-container {
-            padding: 30px;
-            background: #f8fafc;
-            border-radius: var(--radius);
-        }
-        
-        .selected-items {
-            max-height: 300px;
-            overflow-y: auto;
-            margin-bottom: 30px;
-        }
-        
-        .selected-item {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-left: 4px solid var(--accent);
-        }
-        
-        .item-name {
-            font-weight: 600;
-        }
-        
-        .item-price {
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
-        .remove-item {
-            color: #ef4444;
-            cursor: pointer;
-            margin-left: 15px;
-            transition: var(--transition);
-        }
-        
-        .remove-item:hover {
-            color: #dc2626;
-        }
-        
-        .total-summary {
-            border-top: 2px dashed var(--border);
-            padding-top: 25px;
-        }
-        
-        .total-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
+            color: var(--primary-green);
             font-size: 1.1rem;
         }
         
-        .grand-total {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            border-top: 2px solid var(--border);
-            padding-top: 15px;
-            margin-top: 15px;
+        .parameter-location {
+            font-size: 0.85rem;
         }
         
-        .configurator-actions {
+        .parameter-method {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .parameter-footer {
             display: flex;
             justify-content: space-between;
-            margin-top: 40px;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
         }
         
-        /* ===== CONTACT SECTION ===== */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+        .parameter-price {
+            font-weight: 600;
+            color: var(--dark-gray);
         }
         
-        .contact-info h3 {
-            margin-bottom: 25px;
-        }
-        
-        .contact-details {
-            margin-bottom: 30px;
-        }
-        
-        .contact-item {
+        .parameter-status {
+            color: var(--primary-green);
+            font-weight: 500;
             display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 25px;
+            align-items: center;
         }
         
-        .contact-icon {
-            background: var(--light);
-            color: var(--primary);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        .parameter-status i {
+            margin-right: 5px;
+        }
+        
+        /* Microbiological Cards */
+        .micro-card {
+            border-left-color: var(--primary-blue);
+        }
+        
+        .micro-status {
+            color: var(--primary-blue);
+        }
+        
+        /* View Toggle */
+        .view-toggle {
+            background-color: var(--white);
+            border-radius: 50px;
+            padding: 5px;
+            display: inline-flex;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .view-toggle-btn {
+            padding: 8px 20px;
+            border: none;
+            background: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .view-toggle-btn:hover {
+            background-color: var(--light-green);
+            transform: translateY(-2px);
+        }
+        
+        .view-toggle-btn.active {
+            background-color: var(--primary-green);
+            color: var(--white);
+            transform: translateY(0);
+        }
+        
+        /* Mobile CTA */
+        .mobile-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: none;
+            animation: fadeInUp 0.3s;
+        }
+        
+        .btn-whatsapp-fixed {
+            background-color: #25D366;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
         
-        .contact-item-content h4 {
-            margin-bottom: 5px;
-            color: var(--dark);
-            font-size: 1rem;
+        .btn-whatsapp-fixed:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
         }
         
-        .contact-item-content p {
-            margin: 0;
-            color: var(--text);
-            line-height: 1.6;
+        .btn-whatsapp-fixed:active {
+            transform: scale(0.95);
         }
         
-        .whatsapp-box {
-            background: linear-gradient(135deg, #25D366, #128C7E);
+        /* Booking Section */
+        .booking-section {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: var(--white);
+        }
+        
+        .booking-card {
+            background-color: var(--white);
+            color: var(--dark-gray);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .form-control, .form-select {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 0.25rem rgba(26, 117, 83, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
             color: white;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 8px;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Marketing Team */
+        .team-section {
+            background-color: var(--light-gray);
+        }
+        
+        .team-card {
+            background-color: var(--white);
+            border-radius: 10px;
             padding: 25px;
-            border-radius: var(--radius);
             text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            background-color: var(--light-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-size: 2.5rem;
+            transition: transform 0.5s;
+        }
+        
+        .team-card:hover .team-photo {
+            transform: scale(1.1);
+        }
+        
+        .team-name {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .team-position {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
             margin-top: 30px;
         }
         
-        .whatsapp-box h4 {
-            color: white;
-            margin-bottom: 10px;
-            font-size: 1.3rem;
+        .contact-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
         }
         
-        .whatsapp-number {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin: 15px 0;
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
-        .hours-box {
-            background: var(--light);
-            padding: 20px;
-            border-radius: var(--radius);
-            margin-top: 20px;
-            border-left: 4px solid var(--accent);
+        .contact-card:active {
+            transform: scale(0.98);
         }
         
-        .hours-box h4 {
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--primary-green);
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            transition: transform 0.3s;
         }
         
-        .hours-list {
-            list-style: none;
+        .contact-card:hover i {
+            transform: scale(1.2);
         }
         
-        .hours-list li {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .hours-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .map-container {
-            margin-top: 25px;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        .map-container iframe {
-            width: 100%;
-            height: 250px;
-            border: none;
-        }
-        
-        .contact-form {
-            background: var(--light);
-            padding: 35px;
-            border-radius: var(--radius);
-        }
-        
-        .contact-form h3 {
-            margin-bottom: 25px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: var(--transition);
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--secondary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-        
-        /* ===== FOOTER ===== */
+        /* Footer */
         footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 25px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-bottom: 40px;
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 50px 0 20px;
         }
         
         .footer-logo {
-            display: flex;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+        
+        .social-icons a {
+            color: var(--white);
+            background-color: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
+            justify-content: center;
+            margin-right: 10px;
+            transition: all 0.3s;
         }
         
-        .footer-logo-img {
-            height: 45px;
-            width: auto;
-            object-fit: contain;
+        .social-icons a:hover {
+            background-color: var(--primary-green);
+            transform: translateY(-3px) scale(1.1);
         }
         
-        .footer-logo-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 800;
+        .social-icons a:active {
+            transform: scale(0.95);
         }
         
-        .footer-content p {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.7;
-        }
-        
-        .footer-links h4 {
-            color: white;
+        .footer-links h5 {
+            color: var(--white);
             margin-bottom: 20px;
             font-size: 1.1rem;
         }
         
         .footer-links ul {
             list-style: none;
+            padding: 0;
         }
         
         .footer-links li {
@@ -894,412 +929,916 @@
         }
         
         .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
+            color: #bbb;
             text-decoration: none;
-            transition: var(--transition);
+            transition: color 0.3s, transform 0.2s;
+            display: inline-block;
         }
         
         .footer-links a:hover {
-            color: white;
-            padding-left: 5px;
+            color: var(--white);
+            transform: translateX(5px);
         }
         
         .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 30px;
             text-align: center;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
+            color: #bbb;
             font-size: 0.9rem;
         }
         
-        /* ===== RESPONSIVE STYLES ===== */
-        @media (max-width: 1024px) {
-            .profile-card {
-                grid-template-columns: 1fr;
-                max-width: 600px;
-            }
-            
-            .profile-image {
-                padding: 40px 20px;
-            }
-            
-            .profile-img-main {
-                max-width: 220px;
-            }
-            
-            .contact-container {
-                gap: 40px;
-            }
-            
-            .footer-content {
-                gap: 30px;
-            }
+        /* Map */
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 20px;
         }
         
+        /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 15px;
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
             }
             
             section {
                 padding: 60px 0;
             }
             
-            .section-title h2 {
+            .profile-image {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .booking-card {
+                padding: 25px;
+            }
+            
+            .division-tab {
+                min-width: 120px;
+                padding: 15px 10px;
+                font-size: 0.9rem;
+            }
+            
+            .package-price-big {
                 font-size: 2rem;
             }
             
-            /* Navigation */
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: var(--shadow);
-                transform: translateY(-100%);
-                opacity: 0;
-                transition: var(--transition);
-                z-index: 999;
-                gap: 20px;
+            .mobile-cta {
+                display: flex;
             }
             
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
+            /* Hide table on mobile by default */
+            .table-view {
+                display: none;
             }
             
-            .mobile-toggle {
+            .card-view {
                 display: block;
             }
             
-            /* Hero */
-            .hero {
-                padding: 140px 0 80px;
+            /* Adjust spacing for mobile */
+            .parameter-card {
+                padding: 15px;
+                margin-bottom: 12px;
             }
             
-            .hero h1 {
-                font-size: 2.2rem;
+            .company-card, .location-card {
+                padding: 20px 15px;
             }
             
-            .hero h2 {
-                font-size: 1.3rem;
+            /* Ensure no text overflow on mobile */
+            .parameter-name, .team-name, .location-title {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
             }
             
-            .profile-hero-img {
-                width: 140px;
-                height: 140px;
+            /* Price explanation for mobile */
+            .price-explanation {
+                font-size: 0.85rem;
+                padding: 12px;
+                margin: 15px 0;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .card-view {
+                display: none;
             }
             
-            /* Workflow */
-            .workflow-steps {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            /* Configurator */
-            .configurator-steps {
-                flex-direction: column;
-            }
-            
-            .step-tab {
-                border-right: none;
-                border-bottom: 1px solid var(--border);
-            }
-            
-            .step-content {
-                padding: 25px;
-            }
-            
-            .parameter-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .configurator-actions {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .configurator-actions .btn {
-                width: 100%;
-            }
-            
-            /* Contact */
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .contact-form {
-                padding: 25px;
-            }
-            
-            /* Footer */
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
+            .table-view {
+                display: block;
             }
         }
         
         @media (max-width: 576px) {
-            .hero h1 {
+            .navbar-nav {
+                text-align: center;
+                background-color: var(--white);
+                padding: 15px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                margin-top: 10px;
+            }
+            
+            .hero-section {
+                padding-top: 100px;
+            }
+            
+            .brand-text {
+                font-size: 1rem;
+            }
+            
+            .division-nav {
+                flex-direction: column;
+            }
+            
+            .division-tab {
+                width: 100%;
+                flex-direction: row;
+                justify-content: flex-start;
+                text-align: left;
+                padding: 15px 20px;
+            }
+            
+            .division-icon {
+                margin-bottom: 0;
+                margin-right: 15px;
+                font-size: 1.2rem;
+            }
+            
+            .view-toggle {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .view-toggle-btn {
+                flex: 1;
+                justify-content: center;
+            }
+            
+            /* Extra small devices */
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            h2.section-title {
                 font-size: 1.8rem;
             }
             
-            .hero h2 {
-                font-size: 1.1rem;
+            .parameter-card {
+                margin-bottom: 10px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 1.7rem;
             }
             
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-                max-width: 300px;
-                margin: 0 auto;
+            .hero-subtitle {
+                font-size: 1rem;
             }
             
-            .hero-buttons .btn {
-                width: 100%;
+            .profile-image {
+                width: 150px;
+                height: 150px;
             }
             
-            .profile-details {
-                padding: 25px;
+            .brand-text {
+                font-size: 0.9rem;
             }
             
-            .configurator-header {
-                padding: 20px;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
+            .package-price-big {
+                font-size: 1.7rem;
             }
             
-            .category-grid {
+            .contact-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .team-card {
+                padding: 15px;
+            }
+            
+            /* Ensure all text is readable */
+            body {
+                font-size: 0.95rem;
+            }
+            
+            /* Prevent horizontal scrolling */
+            .row {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .container, .container-fluid {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+            
+            /* Improve touch targets */
+            .btn, .nav-link, .division-tab, .parameter-card {
+                min-height: 44px;
+            }
+            
+            .contact-link {
+                padding: 8px 12px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
         }
         
-        /* ===== CUSTOM SCROLLBAR ===== */
-        ::-webkit-scrollbar {
-            width: 8px;
+        /* Prevent horizontal scroll */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
         }
         
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
+        /* Improve spacing for better readability */
+        p, li {
+            margin-bottom: 0.8rem;
         }
         
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-light);
-            border-radius: 10px;
+        /* Consistent spacing */
+        .mb-section {
+            margin-bottom: 2rem;
         }
         
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
-        }
-        
-        /* ===== UTILITY CLASSES ===== */
-        .text-center {
-            text-align: center;
-        }
-        
-        .mb-10 {
-            margin-bottom: 10px;
-        }
-        
-        .mb-20 {
-            margin-bottom: 20px;
-        }
-        
-        .mb-30 {
-            margin-bottom: 30px;
+        /* Better card spacing on mobile */
+        @media (max-width: 768px) {
+            .parameter-card, .brand-card, .location-card {
+                margin-bottom: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <nav class="navbar">
-                <a href="#home" class="logo">
-                    <img src="https://drive.google.com/thumbnail?id=1VMVaW4fywGHyHHptD19-j5E2uLrxX_P9&sz=w1000" 
-                         alt="Logo PT CBI" 
-                         class="logo-img">
-                    <div class="logo-text">CBI<span>Palembang</span></div>
-                </a>
-                <ul class="nav-links">
-                    <li><a href="#home">Beranda</a></li>
-                    <li><a href="#profile">Profil</a></li>
-                    <li><a href="#workflow">Cara Kerja</a></li>
-                    <li><a href="#configurator">Konfigurator Harga</a></li>
-                    <li><a href="#contact">Kontak</a></li>
-                </ul>
-                <div class="mobile-toggle">
-                    <i class="fas fa-bars"></i>
+            <a class="navbar-brand" href="#">
+                <!-- Logo akan dimuat via JavaScript -->
+                <div id="logo-container" class="logo-placeholder" style="width: 50px; height: 50px; background-color: #e8f5f0; border-radius: 5px; margin-right: 10px; display: flex; align-items: center; justify-content: center; color: #1a7553; font-size: 12px;">
+                    CBI Logo
                 </div>
-            </nav>
+                <div>
+                    <div class="brand-text">Chemviro Buana Indonesia</div>
+                    <div class="brand-subtext">Cabang Palembang</div>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#profile">Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#divisions">Divisi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Harga</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#booking">Pemesanan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Kontak</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero-section">
         <div class="container">
-            <div class="hero-content">
-                <img src="https://drive.google.com/thumbnail?id=1amx-NJoCSawBWKOX3-ziYe8rKRWBJpjT&sz=w1000" 
-                     alt="Pak Ade Apriana" 
-                     class="profile-hero-img">
-                <h1>Ade Apriana</h1>
-                <h2>Marketing PT CBI Pusat & Kepala Cabang Palembang</h2>
-                <p>Selamat datang di halaman layanan resmi PT Chemviro Buana Indonesia Cabang Palembang. Saya siap membantu kebutuhan analisis lingkungan dan kualitas air perusahaan Anda dengan solusi terpercaya dan harga kompetitif.</p>
-                <div class="hero-buttons">
-                    <a href="#configurator" class="btn btn-secondary">
-                        <i class="fas fa-calculator"></i> Buat Penawaran Sekarang
-                    </a>
-                    <a href="#contact" class="btn">
-                        <i class="fas fa-phone-alt"></i> Hubungi Saya
-                    </a>
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-center">
+                    <!-- Foto profil akan dimuat via JavaScript -->
+                    <div id="profile-image-container" class="profile-image-placeholder" style="width: 220px; height: 220px; border-radius: 50%; background-color: #e8f5f0; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #1a7553; border: 5px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <div>Foto Profil</div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Profile Section -->
-    <section id="profile" class="profile-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Profil Saya</h2>
-                <p>Kenali lebih dekat tentang profil dan kualifikasi saya</p>
-            </div>
-            <div class="profile-card">
-                <div class="profile-image">
-                    <img src="https://drive.google.com/thumbnail?id=1amx-NJoCSawBWKOX3-ziYe8rKRWBJpjT&sz=w1000" 
-                         alt="Pak Ade Apriana" 
-                         class="profile-img-main">
-                </div>
-                <div class="profile-details">
-                    <h2>Marketing PT CBI Pusat & Kepala Cabang Palembang</h2>
-                    <p>Dengan pengalaman lebih dari 10 tahun di bidang analisis lingkungan, saya memiliki keahlian khusus dalam pengujian kualitas air, udara, dan tanah sesuai standar nasional dan internasional.</p>
-                    <p>Sebagai marketing di CBI Pusat sekaligus kepala cabang di Palembang, saya memastikan setiap klien mendapatkan layanan terbaik dengan akurasi tinggi, pelayanan cepat, dan harga yang transparan.</p>
-                    <p>Saya bertanggung jawab penuh atas operasional laboratorium cabang Palembang dan menjamin semua pengujian dilakukan sesuai prosedur yang terakreditasi.</p>
+                <div class="col-lg-8">
+                    <h1 class="hero-title">Ade Apriana</h1>
+                    <h2 class="hero-sub-subtitle">PT. Chemviro Buana Indonesia</h2>
+                    <h3 class="hero-subtitle">Head of Branch</h3>
+                    <p class="lead">Memimpin cabang Palembang dengan fokus pada layanan konsultan lingkungan, kalibrasi alat, analisis kimia, dan perdagangan peralatan laboratorium serta keselamatan kerja.</p>
                     
-                    <div class="profile-tags">
-                        <span class="tag">Analisis Air & Lingkungan</span>
-                        <span class="tag">Sertifikasi KAN</span>
-                        <span class="tag">Pengujian Laboratorium</span>
-                        <span class="tag">Konsultasi Lingkungan</span>
-                        <span class="tag">Manajemen Kualitas</span>
-                        <span class="tag">Pengembangan Bisnis</span>
+                    <div class="hero-contact">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div>
+                                        <div class="contact-label">Telepon</div>
+                                        <a href="tel:+6285693363566" class="contact-link">
+                                            <div class="contact-value">+62 856-9336-3566</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <div class="contact-label">Email</div>
+                                        <a href="mailto:ade.apriana@chemviro.co.id" class="contact-link">
+                                            <div class="contact-value">ade.apriana@chemviro.co.id</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Workflow Section -->
-    <section id="workflow" class="workflow-section">
+    <!-- Company Profile -->
+    <section id="profile" class="section-light">
         <div class="container">
-            <div class="section-title">
-                <h2>Cara Kerja</h2>
-                <p>3 Langkah mudah mendapatkan penawaran layanan analisis</p>
-            </div>
-            <div class="workflow-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Pilih Layanan</h3>
-                    <p>Pilih jenis analisis yang Anda butuhkan dari berbagai kategori: Air Minum, Air Limbah, Udara, Tanah, atau lainnya.</p>
+            <h2 class="section-title">Profil Perusahaan</h2>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="company-card">
+                        <h4>PT. Chemviro Buana Indonesia</h4>
+                        <div class="slogan">"Smart Choice For Smart Solution"</div>
+                        <p>PT. Chemviro Buana Indonesia adalah perusahaan yang bergerak di bidang:</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check-circle"></i> Jasa Konsultan Lingkungan dan K3</li>
+                            <li><i class="fas fa-check-circle"></i> Jasa Kalibrasi</li>
+                            <li><i class="fas fa-check-circle"></i> Jasa Analisa Kimia</li>
+                            <li><i class="fas fa-check-circle"></i> Perdagangan Alat Laboratorium dan Keselamatan Kerja</li>
+                        </ul>
+                        
+                        <div class="vision-mission mt-4">
+                            <h5>Visi</h5>
+                            <p>Menjadi mitra terbaik bagi pihak pemerintah maupun swasta yang membutuhkan produk dan jasa kami.</p>
+                        </div>
+                        
+                        <div class="vision-mission">
+                            <h5>Misi</h5>
+                            <p>Mengedepankan sikap profesionalisme dalam melayani kebutuhan pelanggan dengan tetap menjaga integritas perusahaan.</p>
+                        </div>
+                        <div class="timeline-badge">Berdiri sejak 2016</div>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Konfigurasi Parameter</h3>
-                    <p>Pilih parameter spesifik yang ingin diuji. Sistem akan menghitung total biaya secara otomatis.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Dapatkan Penawaran</h3>
-                    <p>Hasilkan penawaran resmi dan langsung hubungi saya via WhatsApp untuk konsultasi lebih lanjut.</p>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="company-card">
+                        <h4 class="mb-4">Kantor & Lokasi</h4>
+                        
+                        <!-- Kantor Pusat -->
+                        <div class="location-card main-office">
+                            <div class="location-title">
+                                <i class="fas fa-building"></i> Kantor Pusat
+                            </div>
+                            <p>Ruko Imperium Park No.C19, Ciriung, Cibinong, Bogor 16918</p>
+                            <a href="https://maps.google.com/?q=Ruko+Imperium+Park+No.C19,+Ciriung,+Cibinong,+Bogor+16918" 
+                               target="_blank" 
+                               class="btn btn-sm btn-outline-primary mt-2">
+                                <i class="fas fa-map-marker-alt me-1"></i>Lihat di Peta
+                            </a>
+                        </div>
+                        
+                        <!-- Kantor Cabang -->
+                        <div class="location-card">
+                            <div class="location-title">
+                                <i class="fas fa-map-marker-alt"></i> Cabang Pekanbaru
+                            </div>
+                            <p>Jl. Amal Mulia No.15 Labuh Baru Timur, Payung Sekaki, Pekanbaru – Riau 28282</p>
+                        </div>
+                        
+                        <div class="location-card">
+                            <div class="location-title">
+                                <i class="fas fa-map-marker-alt"></i> Cabang Lampung
+                            </div>
+                            <p>Jl. Palem VI Perum No.21 Blok 18B, Beringin Raya, Kec. Kemiling, Kota Bandar Lampung 35153</p>
+                        </div>
+                        
+                        <div class="location-card">
+                            <div class="location-title">
+                                <i class="fas fa-map-marker-alt"></i> Cabang Semarang
+                            </div>
+                            <p>Menara Suara Merdeka (GENIUS IDEA Lt 11), Jl. Pandanaran No.30, Pekunden, Kec. Semarang Tengah, Kota Semarang, Jawa Tengah 50134</p>
+                        </div>
+                        
+                        <div class="location-card">
+                            <div class="location-title">
+                                <i class="fas fa-map-marker-alt"></i> Cabang Palembang
+                            </div>
+                            <p>Town House, Jl. Malaka 3 No.35 B Kenten Bukit Sangkal Kalidoni, Kota Palembang, Sumatera Selatan</p>
+                            
+                            <!-- Map hanya untuk Palembang -->
+                            <div class="map-container mt-3">
+                                <iframe 
+                                    src="https://maps.google.com/maps?q=-2.9417%2C104.7681&hl=id&z=17&output=embed" 
+                                    width="100%" 
+                                    height="250" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Configurator Section -->
-    <section id="configurator" class="configurator-section">
+    <!-- Divisi Layanan -->
+    <section id="divisions">
         <div class="container">
-            <div class="section-title">
-                <h2>Konfigurator Layanan & Harga</h2>
-                <p>Pilih layanan yang dibutuhkan dan dapatkan penawaran harga secara instan</p>
+            <h2 class="section-title">Divisi Layanan</h2>
+            <p class="text-center mb-5">PT. Chemviro Buana Indonesia memiliki 4 divisi utama yang melayani berbagai kebutuhan industri</p>
+            
+            <!-- Division Navigation Tabs -->
+            <div class="division-nav">
+                <button class="division-tab active" data-target="chemlab">
+                    <div class="division-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div>CHEMLAB<br><small>Lab Services</small></div>
+                </button>
+                
+                <button class="division-tab" data-target="chemcal">
+                    <div class="division-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div>CHEMCAL<br><small>Calibration</small></div>
+                </button>
+                
+                <button class="division-tab" data-target="chemtrade">
+                    <div class="division-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div>CHEMTRADE<br><small>Trading</small></div>
+                </button>
+                
+                <button class="division-tab" data-target="chemcons">
+                    <div class="division-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div>CHEMCONS<br><small>Consultant</small></div>
+                </button>
             </div>
             
-            <div class="configurator-container">
-                <div class="configurator-header">
-                    <h3>Konfigurator Layanan CBI</h3>
-                    <div class="total-price">Total: Rp <span id="totalDisplay">0</span></div>
+            <!-- Division Content -->
+            <div class="division-content active" id="chemlab-content">
+                <div class="company-card">
+                    <h4 class="text-primary">CHEMLAB - Divisi Laboratorium Penguji</h4>
+                    <p class="mb-4">Divisi khusus untuk layanan analisis laboratorium dengan standar tinggi dan akreditasi lengkap.</p>
+                    
+                    <h5>Layanan Utama:</h5>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Jasa Analisa Lingkungan (Udara Ambien, Emisi Sumber Bergerak dan Tidak Bergerak, Air Permukaan, Air Bersih, Air Limbah, dll)</li>
+                        <li><i class="fas fa-check"></i> Jasa Analisa Kesehatan Kerja (Industrial Hygiene)</li>
+                        <li><i class="fas fa-check"></i> Jasa Analisa SNI Crude Palm Oil (CPO)</li>
+                        <li><i class="fas fa-check"></i> Jasa Analisa BioMarker</li>
+                        <li><i class="fas fa-check"></i> Jasa Analisa B3</li>
+                    </ul>
+                    
+                    <div class="mt-4">
+                        <h5>Fasilitas Lab:</h5>
+                        <p>Laboratorium kami dilengkapi dengan peralatan modern dan tim analis berpengalaman dengan sertifikasi kompetensi.</p>
+                    </div>
                 </div>
-                
-                <div class="configurator-steps">
-                    <div class="step-tab active" data-step="1">1. Pilih Kategori</div>
-                    <div class="step-tab" data-step="2">2. Pilih Parameter</div>
-                    <div class="step-tab" data-step="3">3. Ringkasan & Penawaran</div>
+            </div>
+            
+            <div class="division-content" id="chemcal-content">
+                <div class="company-card">
+                    <h4 class="text-primary">CHEMCAL - Divisi Laboratorium Kalibrasi</h4>
+                    <p class="mb-4">Divisi spesialis kalibrasi alat ukur dan instrumentasi dengan traceability ke standar nasional/internasional.</p>
+                    
+                    <h5>Layanan Kalibrasi:</h5>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Kalibrasi Gas Detektor (Single Gas dan Multi Gas)</li>
+                        <li><i class="fas fa-check"></i> Jasa Kalibrasi Gas Analyzer (Flue Gas & CEMS)</li>
+                        <li><i class="fas fa-check"></i> Kalibrasi Alat Emisi Kendaraan (Solar dan Bensin)</li>
+                        <li><i class="fas fa-check"></i> Kalibrasi Flow Meter (Liquid & Gas)</li>
+                        <li><i class="fas fa-check"></i> Kalibrasi Massa, Volume, Temperature & Enclosure</li>
+                        <li><i class="fas fa-check"></i> Jasa Audit CEMS (RCA, CGA, & RATA)</li>
+                        <li><i class="fas fa-check"></i> Jasa Kalibrasi Alat Sparing/Onlimo</li>
+                    </ul>
+                    
+                    <div class="mt-4">
+                        <h5>Sertifikasi:</h5>
+                        <p>Laboratorium kalibrasi kami memiliki sertifikasi kompetensi dan traceability yang diakui secara nasional.</p>
+                    </div>
                 </div>
-                
-                <div class="step-content">
-                    <!-- Step 1: Category Selection -->
-                    <div class="step-panel active" id="step1">
-                        <h3 class="mb-30">Pilih Jenis Layanan</h3>
-                        <div class="category-grid" id="categoryGrid">
-                            <!-- Categories will be loaded by JavaScript -->
-                        </div>
-                        <div class="configurator-actions">
-                            <div></div>
-                            <button class="btn" onclick="nextStep(2)">
-                                Selanjutnya <i class="fas fa-arrow-right"></i>
-                            </button>
+            </div>
+            
+            <div class="division-content" id="chemtrade-content">
+                <div class="company-card">
+                    <h4 class="text-primary">CHEMTRADE - Divisi Perdagangan Peralatan Laboratorium</h4>
+                    <p class="mb-4">Divisi penyedia peralatan laboratorium, keselamatan kerja, dan monitoring system terkemuka.</p>
+                    
+                    <h5>Produk Unggulan:</h5>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> IAQ (Indoor Air Quality) Equipment</li>
+                        <li><i class="fas fa-check"></i> AQM/AQMS (Air Quality Monitoring Systems)</li>
+                        <li><i class="fas fa-check"></i> SPARING/ONLIMO/WQMS (Water Quality Monitoring Systems) sesuai PERMENLHK</li>
+                        <li><i class="fas fa-check"></i> Gas Detektor, Gas Sampler (Impinger), Dust Sampler (PM10, PM 2.5, TSP)</li>
+                        <li><i class="fas fa-check"></i> Peralatan Sampling Lingkungan dan Kesehatan Kerja</li>
+                        <li><i class="fas fa-check"></i> Peralatan Safety</li>
+                        <li><i class="fas fa-check"></i> Bahan Kimia Laboratorium dan Produksi</li>
+                        <li><i class="fas fa-check"></i> Furniture Laboratorium (Fume Hood, Scrubber, Meja Kerja, dll)</li>
+                    </ul>
+                    
+                    <div class="mt-4">
+                        <h5>Brand yang Kami Distribusikan:</h5>
+                        <div class="brand-grid">
+                            <div class="brand-card">
+                                <div class="brand-logo-placeholder" style="height: 40px; background-color: #e8f5f0; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #1a7553; margin-bottom: 10px;">
+                                    AkzoNobel
+                                </div>
+                                <p class="small mb-0">Coating/cat pelapis industri (Intershield 300, Intersleek 731, Interbond 201, Intergard 740)</p>
+                            </div>
+                            
+                            <div class="brand-card">
+                                <div class="brand-logo-placeholder" style="height: 40px; background-color: #e8f5f0; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #1a7553; margin-bottom: 10px;">
+                                    BroadSensor
+                                </div>
+                                <p class="small mb-0">Water Quality Monitoring (Multiparameter Water Quality Sonde, UV254 5-BEAMS COD Sensor)</p>
+                            </div>
+                            
+                            <div class="brand-card">
+                                <div class="brand-logo-placeholder" style="height: 40px; background-color: #e8f5f0; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #1a7553; margin-bottom: 10px;">
+                                    Pulsar
+                                </div>
+                                <p class="small mb-0">Flow Meters (Transit Time Flow Meter, DBMACH3, MicroFlow-i)</p>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            
+            <div class="division-content" id="chemcons-content">
+                <div class="company-card">
+                    <h4 class="text-primary">CHEMCONS - Divisi Konsultan Lingkungan dan K3</h4>
+                    <p class="mb-4">Divisi konsultan profesional untuk pengelolaan lingkungan, K3, dan sistem manajemen.</p>
                     
-                    <!-- Step 2: Parameter Selection -->
-                    <div class="step-panel" id="step2">
-                        <h3 class="mb-20">Pilih Parameter Pengujian</h3>
-                        <div id="currentCategoryName" class="mb-30" style="font-size: 1.1rem; color: var(--primary); font-weight: 600; background: rgba(10, 36, 99, 0.05); padding: 12px 20px; border-radius: 8px;"></div>
-                        <div class="parameters-container" id="parametersContainer">
-                            <!-- Parameters will be loaded by JavaScript -->
+                    <h5>Layanan Konsultasi:</h5>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> <strong>Health Risk Assessment (HRA):</strong> Membantu penyusunan dokumen HRA untuk mengidentifikasi bahaya kesehatan kerja (Permenaker 05 Tahun 2018)</li>
+                        <li><i class="fas fa-check"></i> <strong>Assessment Ergonomic:</strong> Penilaian postur kerja di tempat kerja (Permenaker 05 Tahun 2018)</li>
+                        <li><i class="fas fa-check"></i> <strong>Assessment Psychosocial:</strong> Penilaian bahaya kesehatan kerja akibat faktor psikologis karyawan (Permenaker 05 Tahun 2018)</li>
+                        <li><i class="fas fa-check"></i> <strong>Audit Sistem K3:</strong> Membangun sistem Kesehatan dan Keselamatan Kerja (K3) dan dokumen safety (CHSEM) sesuai PP No. 50 Tahun 2012</li>
+                        <li><i class="fas fa-check"></i> <strong>Audit Proper:</strong> Konsultasi program PROPER pemerintah, membangun sistem dan implementasi</li>
+                        <li><i class="fas fa-check"></i> <strong>Konsultan ISO 17025:</strong> Membangun sistem dan implementasi Manajemen Laboratorium hingga mendapat Sertifikat Akreditasi ISO 17025</li>
+                        <li><i class="fas fa-check"></i> <strong>Corrosion Assessment:</strong> Analisa tingkat korosi pada bangunan dan infrastruktur, solusi pencegahan korosi</li>
+                    </ul>
+                    
+                    <div class="mt-4">
+                        <h5>Tim Ahli:</h5>
+                        <p>Didukung oleh tim konsultan bersertifikasi dengan pengalaman luas di berbagai sektor industri.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Table -->
+    <section id="pricing" class="price-table-section">
+        <div class="container">
+            <h2 class="section-title">Harga Analisis Air Minum RO – Cabang Palembang</h2>
+            <p class="text-center mb-4">Regulasi: Association for the Advancement of Medical Instrument (AAMI) Tahun 2015</p>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="price-card">
+                        <!-- Package Summary -->
+                        <div class="package-summary">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="text-white mb-3">Paket Lengkap Analisis Air RO</h4>
+                                    <p class="mb-0">21 parameter kimia (SEMUA parameter bertanda *)</p>
+                                </div>
+                                <div class="col-md-4 text-md-end">
+                                    <div class="package-price-big">Rp 3.200.000</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="configurator-actions">
-                            <button class="btn" onclick="prevStep(1)">
-                                <i class="fas fa-arrow-left"></i> Kembali
-                            </button>
-                            <button class="btn" onclick="nextStep(3)">
-                                Selanjutnya <i class="fas fa-arrow-right"></i>
-                            </button>
+                        
+                        <!-- NEW: Price Explanation Text -->
+                        <div class="price-explanation">
+                            <i class="fas fa-info-circle"></i>
+                            <strong>Harga satuan ditampilkan sebagai referensi.</strong> Paket menggunakan harga bundling khusus dan bukan hasil penjumlahan harga satuan.
+                        </div>
+                        
+                        <!-- Important Information -->
+                        <div class="package-details">
+                            <h5><i class="fas fa-info-circle me-2"></i>Informasi Penting:</h5>
+                            <ul class="mb-0">
+                                <li><strong>Harga paket adalah harga bundling khusus</strong> dan bukan hasil penjumlahan harga satuan.</li>
+                                <li><strong>Klorin (Cl2) termasuk dalam paket.</strong> Semua 21 parameter kimia bertanda * masuk dalam paket.</li>
+                                <li>Parameter mikrobiologi bersifat <strong>tambahan (add-on)</strong> di luar paket.</li>
+                                <li><strong>Harga belum termasuk PPN 11%.</strong></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- View Toggle -->
+                        <div class="text-center mb-4">
+                            <div class="view-toggle">
+                                <button class="view-toggle-btn active" data-view="card">
+                                    <i class="fas fa-th-large"></i> Versi Ringkas
+                                </button>
+                                <button class="view-toggle-btn" data-view="table">
+                                    <i class="fas fa-table"></i> Versi Tabel
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Card View (Mobile) -->
+                        <div class="card-view">
+                            <!-- Price explanation for mobile view -->
+                            <div class="price-explanation mb-4">
+                                <i class="fas fa-info-circle"></i>
+                                <strong>Harga satuan ditampilkan sebagai referensi.</strong> Paket menggunakan harga bundling khusus dan bukan hasil penjumlahan harga satuan.
+                            </div>
+                            
+                            <h5 class="mb-4">Parameter Kimia (21 Parameter – Termasuk Paket)</h5>
+                            <div id="chemical-cards-container">
+                                <!-- Chemical parameter cards will be populated by JavaScript -->
+                            </div>
+                            
+                            <h5 class="mt-5 mb-4">Parameter Mikrobiologi (2 Parameter – Add-on)</h5>
+                            <div id="microbiological-cards-container">
+                                <!-- Microbiological parameter cards will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <!-- Table View (Desktop) -->
+                        <div class="table-view">
+                            <!-- Price explanation for table view -->
+                            <div class="price-explanation mb-4">
+                                <i class="fas fa-info-circle"></i>
+                                <strong>Harga satuan ditampilkan sebagai referensi.</strong> Paket menggunakan harga bundling khusus dan bukan hasil penjumlahan harga satuan.
+                            </div>
+                            
+                            <h5 class="mt-4 mb-3">Parameter Kimia (21 Parameter)</h5>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th width="5%">No</th>
+                                            <th width="25%">Parameter Uji</th>
+                                            <th width="15%">Lokasi</th>
+                                            <th width="25%">Metode</th>
+                                            <th width="15%">Harga Satuan</th>
+                                            <th width="15%">Paket</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="chemical-table-body">
+                                        <!-- Chemical parameters will be populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <h5 class="mt-5 mb-3">Parameter Mikrobiologi (2 Parameter)</h5>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th width="5%">No</th>
+                                            <th width="25%">Parameter Uji</th>
+                                            <th width="15%">Lokasi</th>
+                                            <th width="25%">Metode</th>
+                                            <th width="15%">Harga Satuan</th>
+                                            <th width="15%">Paket</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="microbiological-table-body">
+                                        <!-- Microbiological parameters will be populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional Information -->
+                        <div class="alert alert-info mt-4">
+                            <h5><i class="fas fa-info-circle me-2"></i>Keterangan:</h5>
+                            <ul class="mb-0">
+                                <li><span class="badge badge-inlab">Inlab (PRL)</span> = Pengujian di laboratorium internal</li>
+                                <li><span class="badge badge-subkon">Subkon</span> = Subkontrak ke laboratorium partner</li>
+                                <li><strong>Harga dapat berubah sewaktu-waktu tanpa pemberitahuan sebelumnya</strong></li>
+                                <li>Untuk informasi lebih lanjut, hubungi marketing kami</li>
+                            </ul>
                         </div>
                     </div>
-                    
-                    <!-- Step 3: Summary -->
-                    <div class="step-panel" id="step3">
-                        <h3 class="mb-30">Ringkasan Penawaran</h3>
-                        <div class="summary-container">
-                            <div class="selected-items" id="selectedItems">
-                                <!-- Selected items will be displayed here -->
-                                <p style="text-align: center; padding: 30px; color: #64748b;">Belum ada parameter yang dipilih.</p>
-                            </div>
-                            <div class="total-summary">
-                                <div class="total-row">
-                                    <span>Subtotal:</span>
-                                    <span>Rp <span id="subtotalDisplay">0</span></span>
-                                </div>
-                                <div class="total-row grand-total">
-                                    <span>Total Penawaran:</span>
-                                    <span>Rp <span id="grandTotalDisplay">0</span></span>
-                                </div>
-                            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketing Team & Booking -->
+    <section id="booking" class="team-section">
+        <div class="container">
+            <h2 class="section-title">Tim Marketing & Pemesanan</h2>
+            <p class="text-center mb-5">Hubungi tim marketing kami untuk konsultasi dan pemesanan layanan</p>
+            
+            <!-- Marketing Team -->
+            <div class="row mb-5">
+                <div class="col-md-4 mb-4">
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <i class="fas fa-user"></i>
                         </div>
-                        <div class="configurator-actions">
-                            <button class="btn" onclick="prevStep(2)">
-                                <i class="fas fa-arrow-left"></i> Kembali
-                            </button>
-                            <button class="btn btn-accent" onclick="generateQuotation()">
-                                <i class="fab fa-whatsapp"></i> Buat Penawaran & Hubungi WhatsApp
-                            </button>
+                        <div class="team-name">Ade Apriana</div>
+                        <div class="team-position">Kepala Cabang Palembang</div>
+                        <div class="team-contact">
+                            <p class="mb-1">
+                                <a href="tel:+6285693363566" class="contact-link">
+                                    <i class="fas fa-phone-alt me-2"></i>085693363566
+                                </a>
+                            </p>
+                            <p class="mb-3">
+                                <a href="mailto:ade.apriana@chemviro.co.id" class="contact-link">
+                                    <i class="fas fa-envelope me-2"></i>ade.apriana@chemviro.co.id
+                                </a>
+                            </p>
+                            <a href="https://wa.me/6285693363566" target="_blank" class="btn btn-whatsapp btn-sm">
+                                <i class="fab fa-whatsapp me-2"></i>Chat via WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-name">Lambang Mahmuddan K.</div>
+                        <div class="team-position">Marketing</div>
+                        <div class="team-contact">
+                            <p class="mb-1">
+                                <a href="tel:+6282177598264" class="contact-link">
+                                    <i class="fas fa-phone-alt me-2"></i>082177598264
+                                </a>
+                            </p>
+                            <p class="mb-3">
+                                <a href="mailto:marketing@chemviro.co.id" class="contact-link">
+                                    <i class="fas fa-envelope me-2"></i>marketing@chemviro.co.id
+                                </a>
+                            </p>
+                            <a href="https://wa.me/6282177598264" target="_blank" class="btn btn-whatsapp btn-sm">
+                                <i class="fab fa-whatsapp me-2"></i>Chat via WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-name">Nur Arief Febrianto</div>
+                        <div class="team-position">Marketing</div>
+                        <div class="team-contact">
+                            <p class="mb-1">
+                                <a href="tel:+6285345746778" class="contact-link">
+                                    <i class="fas fa-phone-alt me-2"></i>085345746778
+                                </a>
+                            </p>
+                            <p class="mb-3">
+                                <a href="mailto:marketing.plb@chemviro.co.id" class="contact-link">
+                                    <i class="fas fa-envelope me-2"></i>marketing.plb@chemviro.co.id
+                                </a>
+                            </p>
+                            <a href="https://wa.me/6285345746778" target="_blank" class="btn btn-whatsapp btn-sm">
+                                <i class="fab fa-whatsapp me-2"></i>Chat via WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Booking Form -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="booking-card">
+                        <h4 class="text-center mb-4">Form Permintaan Penawaran</h4>
+                        
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <form id="bookingForm">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="name" class="form-label">Nama Lengkap *</label>
+                                                <input type="text" class="form-control" id="name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="company" class="form-label">Perusahaan *</label>
+                                                <input type="text" class="form-control" id="company" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Email *</label>
+                                                <input type="email" class="form-control" id="email" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="phone" class="form-label">Telepon *</label>
+                                                <input type="tel" class="form-control" id="phone" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="division" class="form-label">Divisi Layanan *</label>
+                                        <select class="form-select" id="division" required>
+                                            <option value="">Pilih Divisi</option>
+                                            <option value="CHEMLAB">CHEMLAB - Lab Services</option>
+                                            <option value="CHEMCAL">CHEMCAL - Calibration</option>
+                                            <option value="CHEMTRADE">CHEMTRADE - Trading</option>
+                                            <option value="CHEMCONS">CHEMCONS - Consultant</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="marketingContact" class="form-label">Ingin Dihubungi oleh *</label>
+                                        <select class="form-select" id="marketingContact" required>
+                                            <option value="">Pilih Kontak Marketing</option>
+                                            <option value="Ade Apriana">Ade Apriana (085693363566)</option>
+                                            <option value="Lambang Mahmuddan K.">Lambang Mahmuddan K. (082177598264)</option>
+                                            <option value="Nur Arief Febrianto">Nur Arief Febrianto (085345746778)</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="message" class="form-label">Pesan / Kebutuhan Spesifik</label>
+                                        <textarea class="form-control" id="message" rows="4" placeholder="Jelaskan kebutuhan Anda, jenis layanan yang dibutuhkan, atau pertanyaan spesifik..."></textarea>
+                                    </div>
+                                    
+                                    <div class="d-grid gap-3 d-md-flex justify-content-md-start">
+                                        <button type="submit" class="btn btn-primary px-4">
+                                            <i class="fas fa-paper-plane me-2"></i>Kirim Permintaan
+                                        </button>
+                                        <a href="https://wa.me/6285693363566?text=Halo,%20saya%20ingin%20konsultasi%20tentang%20layanan%20CBI" 
+                                           target="_blank" 
+                                           class="btn btn-whatsapp px-4">
+                                            <i class="fab fa-whatsapp me-2"></i>Konsultasi Gratis
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <div class="col-lg-5">
+                                <div class="p-4 bg-light rounded h-100">
+                                    <h5 class="text-primary"><i class="fas fa-info-circle me-2"></i>Informasi Penting</h5>
+                                    <ul class="mt-3">
+                                        <li class="mb-2">Permintaan penawaran akan diproses dalam 1x24 jam pada hari kerja</li>
+                                        <li class="mb-2">Harap siapkan informasi detail tentang kebutuhan Anda</li>
+                                        <li class="mb-2">Kami menyediakan konsultasi awal gratis via telepon/WhatsApp</li>
+                                        <li class="mb-2">Untuk proyek mendesak, langsung hubungi marketing via WhatsApp</li>
+                                        <li class="mb-2">Semua penawaran harga disertai dengan detail scope of work</li>
+                                    </ul>
+                                    
+                                    <div class="mt-4 pt-3 border-top">
+                                        <h6 class="text-primary"><i class="fas fa-clock me-2"></i>Jam Operasional</h6>
+                                        <p class="mb-0">Senin - Jumat: 08.00 - 17.00 WIB</p>
+                                        <p>Sabtu: 08.00 - 12.00 WIB</p>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <h6 class="text-primary"><i class="fas fa-file-invoice me-2"></i>Ketentuan</h6>
+                                        <p class="small mb-0">Harga belum termasuk PPN 11%. Harga dapat berubah sewaktu-waktu tanpa pemberitahuan sebelumnya.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1308,134 +1847,43 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
+    <section id="contact">
         <div class="container">
-            <div class="section-title">
-                <h2>Hubungi Saya</h2>
-                <p>Silakan hubungi untuk konsultasi lebih lanjut</p>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Informasi Kontak</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-user-tie"></i>
-                            </div>
-                            <div class="contact-item-content">
-                                <h4>Penanggung Jawab</h4>
-                                <p><strong>Ade Apriana</strong><br>
-                                Marketing PT CBI Pusat<br>
-                                Kepala Cabang Palembang</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <div class="contact-item-content">
-                                <h4>Perusahaan</h4>
-                                <p><strong>PT Chemviro Buana Indonesia (CBI)</strong><br>
-                                Cabang Palembang<br>
-                                Laboratorium Terakreditasi KAN</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-item-content">
-                                <h4>Alamat Cabang</h4>
-                                <p>Jl. Letkol Iskandar No. 17F<br>
-                                Lorok Pakjo, Palembang<br>
-                                Sumatera Selatan 30137</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-item-content">
-                                <h4>Email</h4>
-                                <p><a href="mailto:ade.apriana@chemviro.co.id" style="color: var(--primary); text-decoration: none;">
-                                    ade.apriana@chemviro.co.id
-                                </a></p>
-                            </div>
-                        </div>
+            <h2 class="section-title">Kontak Perusahaan</h2>
+            <p class="text-center mb-5">Untuk informasi lebih lanjut tentang layanan kami, silakan hubungi:</p>
+            
+            <div class="contact-grid">
+                <a href="https://www.chemviro.com/" target="_blank" class="contact-link">
+                    <div class="contact-card">
+                        <i class="fas fa-globe"></i>
+                        <h5>Website</h5>
+                        <p>www.chemviro.com</p>
                     </div>
-                    
-                    <div class="hours-box">
-                        <h4><i class="fas fa-clock"></i> Jam Operasional</h4>
-                        <ul class="hours-list">
-                            <li>
-                                <span>Senin - Jumat</span>
-                                <span>08:00 - 16:00 WIB</span>
-                            </li>
-                            <li>
-                                <span>Sabtu</span>
-                                <span>08:00 - 12:00 WIB</span>
-                            </li>
-                            <li>
-                                <span>Minggu</span>
-                                <span>Tutup</span>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="map-container">
-                        <iframe 
-                            src="https://maps.google.com/maps?q=-2.9417%2C104.7681&z=17&hl=id&output=embed" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    
-                    <div class="whatsapp-box">
-                        <i class="fab fa-whatsapp" style="font-size: 2.5rem; margin-bottom: 10px;"></i>
-                        <h4>Hubungi via WhatsApp</h4>
-                        <p>Untuk konsultasi cepat dan penawaran langsung</p>
-                        <div class="whatsapp-number">+62 856-9336-3566</div>
-                        <button class="btn" style="background: white; color: #25D366; margin-top: 15px;" onclick="openWhatsApp()">
-                            <i class="fab fa-whatsapp"></i> Kirim Pesan WhatsApp
-                        </button>
-                    </div>
-                </div>
+                </a>
                 
-                <div class="contact-form">
-                    <h3>Kirim Pesan</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nama Lengkap</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="company">Perusahaan / Institusi</label>
-                            <input type="text" id="company" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Telepon / WhatsApp</label>
-                            <input type="tel" id="phone" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Pesan / Kebutuhan Layanan</label>
-                            <textarea id="message" class="form-control" rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-secondary" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i> Kirim Pesan
-                        </button>
-                    </form>
-                </div>
+                <a href="tel:02187914212" class="contact-link">
+                    <div class="contact-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h5>Telepon/Fax</h5>
+                        <p>(021) 8791 4212</p>
+                    </div>
+                </a>
+                
+                <a href="mailto:marketing@chemviro.co.id" class="contact-link">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h5>Email</h5>
+                        <p>marketing@chemviro.co.id</p>
+                    </div>
+                </a>
+                
+                <a href="https://maps.google.com/?q=Ruko+Imperium+Park+No.C19,+Ciriung,+Cibinong,+Bogor+16918" target="_blank" class="contact-link">
+                    <div class="contact-card">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h5>Kantor Pusat</h5>
+                        <p>Ruko Imperium Park No.C19, Ciriung, Cibinong, Bogor 16918</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -1443,660 +1891,599 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div>
-                    <div class="footer-logo">
-                        <img src="https://drive.google.com/thumbnail?id=1VMVaW4fywGHyHHptD19-j5E2uLrxX_P9&sz=w1000" 
-                             alt="Logo PT CBI" 
-                             class="footer-logo-img">
-                        <div class="footer-logo-text">CBI<span style="color: #3b82f6;">Palembang</span></div>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <!-- Logo akan dimuat via JavaScript -->
+                    <div id="footer-logo-container" class="footer-logo-placeholder" style="width: 150px; height: 60px; background-color: rgba(255,255,255,0.1); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 15px;">
+                        CBI Logo
                     </div>
-                    <p>PT Chemviro Buana Indonesia Cabang Palembang menyediakan layanan analisis lingkungan terpercaya dengan akurasi tinggi dan sertifikasi resmi.</p>
+                    <p>PT. Chemviro Buana Indonesia adalah perusahaan yang bergerak di bidang jasa konsultan, jasa kalibrasi, jasa analisis kimia, dan perdagangan alat laboratorium serta keselamatan kerja di Indonesia.</p>
+                    <div class="social-icons">
+                        <a href="https://chemviro.com/" target="_blank" title="Website"><i class="fas fa-globe"></i></a>
+                        <a href="https://wa.me/6285693363566" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/chemviro.id/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
                 
-                <div class="footer-links">
-                    <h4>Layanan Utama</h4>
-                    <ul>
-                        <li><a href="#configurator">Analisis Air Minum</a></li>
-                        <li><a href="#configurator">Analisis Air Limbah</a></li>
-                        <li><a href="#configurator">Analisis Kualitas Udara</a></li>
-                        <li><a href="#configurator">Analisis Tanah</a></li>
-                        <li><a href="#configurator">Pengujian Laboratorium</a></li>
-                    </ul>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Menu</h5>
+                        <ul>
+                            <li><a href="#home">Beranda</a></li>
+                            <li><a href="#profile">Profil</a></li>
+                            <li><a href="#divisions">Divisi</a></li>
+                            <li><a href="#pricing">Harga</a></li>
+                            <li><a href="#booking">Pemesanan</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Divisi Layanan</h5>
+                        <ul>
+                            <li><a href="#divisions" data-division="chemlab">CHEMLAB - Lab Services</a></li>
+                            <li><a href="#divisions" data-division="chemcal">CHEMCAL - Calibration</a></li>
+                            <li><a href="#divisions" data-division="chemtrade">CHEMTRADE - Trading</a></li>
+                            <li><a href="#divisions" data-division="chemcons">CHEMCONS - Consultant</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Kontak</h5>
+                        <ul>
+                            <li><a href="tel:02187914212"><i class="fas fa-phone-alt me-2"></i>(021) 8791 4212</a></li>
+                            <li><a href="mailto:marketing@chemviro.co.id"><i class="fas fa-envelope me-2"></i>marketing@chemviro.co.id</a></li>
+                            <li><a href="https://maps.google.com/?q=Bogor,+Jawa+Barat" target="_blank"><i class="fas fa-map-marker-alt me-2"></i>Bogor, Jawa Barat</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2025 PT Chemviro Buana Indonesia (CBI) Cabang Palembang. Hak Cipta Dilindungi.</p>
+                <p>&copy; PT. Chemviro Buana Indonesia. All rights reserved.</p>
+                <p class="small">Website ini diperbarui berdasarkan Company Profile dan Price List PT. Chemviro Buana Indonesia Tahun 2025</p>
             </div>
         </div>
     </footer>
 
+    <!-- Mobile CTA -->
+    <div class="mobile-cta">
+        <a href="https://wa.me/6285693363566?text=Halo,%20saya%20ingin%20konsultasi%20tentang%20layanan%20CBI" 
+           target="_blank" 
+           class="btn-whatsapp-fixed">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
-        // ===== DATA LAYANAN (ASLI - TIDAK DIUBAH) =====
-        const serviceData = {
-            categories: [
-                {
-                    id: 'air-ro',
-                    name: 'Air Minum RO',
-                    icon: 'fa-tint',
-                    description: 'Analisis air RO sesuai standar AAMI 2015',
-                    regulasi: 'Association for the Advancement of Medical Instrument (AAMI) Tahun 2015',
-                    parameters: [
-                        { id: 'ca', name: 'Kalsium (Ca)', method: 'ICP/AAS Furnace', price: 150000, note: 'Subkon', packageAvailable: true, packagePrice: 3200000 },
-                        { id: 'mg', name: 'Magnesium (Mg)', method: 'ICP/AAS Furnace', price: 150000, note: 'Subkon' },
-                        { id: 'na', name: 'Natrium (Na)', method: 'ICP/AAS Furnace', price: 150000, note: 'Subkon' },
-                        { id: 'k', name: 'Kalium (K)', method: 'ICP/AAS Furnace', price: 150000, note: 'Subkon' },
-                        { id: 'f', name: 'Fluoride (F-)', method: 'Spektro UV-Vis', price: 72950, note: 'Inlab (PRL)' },
-                        { id: 'cl', name: 'Klorida (Cl)', method: 'Direct Reading', price: 57740, note: 'Inlab (PRL)' },
-                        { id: 'no3', name: 'Nitrat (NO3-N)', method: 'Spektro UV-Vis', price: 47065, note: 'Inlab (PRL)' },
-                        { id: 'so4', name: 'Sulfat (SO42-)', method: 'Spektro UV-Vis', price: 57725, note: 'Inlab (PRL)' },
-                        { id: 'cu', name: 'Tembaga (Cu)', method: 'ICP/AAS Furnace', price: 152165, note: 'Inlab (PRL)' },
-                        { id: 'ba', name: 'Barium (Ba)', method: 'ICP/AAS Furnace', price: 150000, note: 'Subkon' },
-                        { id: 'zn', name: 'Seng (Zn)', method: 'AAS Flame', price: 152188, note: 'Inlab (PRL)' },
-                        { id: 'al', name: 'Aluminium (Al)', method: 'ICP/AAS Furnace', price: 150000, note: 'Subkon' },
-                        { id: 'as', name: 'Arsen (As)', method: 'ICP/AAS Furnace', price: 150000, note: 'Subkon' },
-                        { id: 'pb', name: 'Timbal (Pb)', method: 'ICP/AAS Furnace', price: 152233, note: 'Inlab (PRL)' },
-                        { id: 'ag', name: 'Perak (Ag)', method: 'ICP/AAS Furnace', price: 150000, note: 'Subkon' },
-                        { id: 'cd', name: 'Kadmium (Cd)', method: 'ICP/AAS Furnace', price: 152345, note: 'Inlab (PRL)' },
-                        { id: 'cr', name: 'Kromium (Cr)', method: 'ICP/AAS Furnace', price: 152073, note: 'Inlab (PRL)' },
-                        { id: 'se', name: 'Selenium (Se)', method: 'ICP/AAS Furnace', price: 150000, note: 'Subkon' },
-                        { id: 'hg', name: 'Raksa (Hg)', method: 'ICP/AAS Furnace', price: 150000, note: 'Subkon' },
-                        { id: 'sb', name: 'Antimon (Sb)', method: 'ICP/AAS Furnace', price: 150000, note: 'Subkon' },
-                        { id: 'cl2', name: 'Klorin (Cl2)', method: 'ICP/AAS Furnace', price: 150000, note: 'Subkon' },
-                        { id: 'kuman', name: 'Angka Kuman', method: '-', price: 30275, note: 'Subkon' },
-                        { id: 'endotoksin', name: 'Endotoksin', method: 'Inkubasi', price: 1128008, note: 'Inlab (PRL)' }
-                    ]
-                },
-                {
-                    id: 'air-minum',
-                    name: 'Air Minum Standar',
-                    icon: 'fa-glass-water',
-                    description: 'Analisis air minum sesuai Permenkes 492/2010',
-                    regulasi: 'Peraturan Menteri Kesehatan No. 492 Tahun 2010',
-                    parameters: [
-                        // Fisika
-                        { id: 'bau', name: 'Bau', method: '-', price: 15000, note: 'Inlab (PRL)', group: 'Fisika', packageAvailable: true, packagePrice: 1350000 },
-                        { id: 'warna', name: 'Warna', method: 'Spektro UV-Vis', price: 35000, note: 'Inlab (PRL)', group: 'Fisika' },
-                        { id: 'tds', name: 'Total Disolved Solid (TDS)', method: 'Gravimetri', price: 80000, note: 'Inlab (PRL)', group: 'Fisika' },
-                        { id: 'kekeruhan', name: 'Kekeruhan', method: 'Direct Reading', price: 20000, note: 'Inlab (PRL)', group: 'Fisika' },
-                        { id: 'rasa', name: 'Rasa', method: '-', price: 15000, note: 'Inlab (PRL)', group: 'Fisika' },
-                        { id: 'suhu', name: 'Suhu', method: 'Direct Reading', price: 15000, note: 'Inlab (PRL)', group: 'Fisika' },
-                        
-                        // Anorganik
-                        { id: 'f2', name: 'Fluorida (F-)', method: 'Spektro UV-Vis', price: 72950, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'cr2', name: 'Krom (Cr)', method: 'ICP/AAS Furnace', price: 81658, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'cd2', name: 'Kadmium (Cd)', method: 'ICP/AAS Furnace', price: 81876, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'no2', name: 'Nitrit (Sebagai NO2-)', method: 'Spektro UV-Vis', price: 11745, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'no3-2', name: 'Nitrat (Sebagai NO3-)', method: 'Spektro UV-Vis', price: 47065, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'fe', name: 'Besi (Fe)', method: 'ICP/AAS Furnace', price: 81208, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'kesadahan', name: 'Kesadahan (CaCO3)', method: 'Titrasi', price: 30418, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'cl2-2', name: 'Klorida (Cl-)', method: 'Titrasi', price: 57740, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'mn', name: 'Mangan (Mn)', method: 'AAS Flame', price: 81632, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'ph', name: 'pH', method: 'Direct Reading', price: 49595, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'zn2', name: 'Seng (Zn)', method: 'AAS Flame', price: 81750, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'so4-2', name: 'Sulfat (SO42-)', method: 'Spektro UV-Vis', price: 57725, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'cu2', name: 'Tembaga (Cu)', method: 'AAS Flame', price: 81732, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'nh3', name: 'Amonia (NH3-N)', method: 'Spektro UV-Vis', price: 33548, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        
-                        // Organik
-                        { id: 'zat-organik', name: 'Zat Organik (KMnO4)', method: 'Titrasi', price: 70463, note: 'Inlab (PRL)', group: 'Organik' },
-                        { id: 'deterjen', name: 'Deterjen (MBAS)', method: 'Spektro UV-Vis', price: 361440, note: 'Inlab (PRL)', group: 'Organik' },
-                        
-                        // Mikrobiologi
-                        { id: 'ecoli', name: 'E-Coli', method: '-', price: 110000, note: 'Inlab (PRL)', group: 'Mikrobiologi' },
-                        { id: 'total-coliform', name: 'Total Coliform', method: '-', price: 110000, note: 'Inlab (PRL)', group: 'Mikrobiologi' }
-                    ]
-                },
-                {
-                    id: 'air-permukaan',
-                    name: 'Air Permukaan / Sungai',
-                    icon: 'fa-water',
-                    description: 'Analisis air permukaan sesuai PP 22/2021',
-                    regulasi: 'Peraturan Pemerintah Republik Indonesia No. 22 Tahun 2021',
-                    parameters: [
-                        { id: 'suhu2', name: 'Suhu', method: 'Direct Reading', price: 20000, note: 'Inlab', group: 'Fisika', packageAvailable: true, packagePrice: 2250000 },
-                        { id: 'tds2', name: 'Total Disolved Solid (TDS)', method: 'Gravimetri', price: 80000, note: 'Inlab', group: 'Fisika' },
-                        { id: 'tss', name: 'Total Suspended Solid (TSS)', method: 'Gravimetri', price: 80000, note: 'Inlab', group: 'Fisika' },
-                        { id: 'warna2', name: 'Warna', method: 'Spektro UV-Vis', price: 35000, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'ph2', name: 'pH', method: 'Direct Reading', price: 50000, note: 'Inlab', group: 'Anorganik' },
-                        { id: 'bod', name: 'Biologycal Oxygen Demand (BOD)', method: 'Inkubasi', price: 150000, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'cod', name: 'Chemical Oxygen Demand (COD)', method: 'Spektro UV-Vis', price: 150000, note: 'Inlab', group: 'Anorganik' },
-                        { id: 'do', name: 'Dissolve Oxygen (DO)', method: 'Direct Reading', price: 30100, note: 'Inlab', group: 'Anorganik' },
-                        { id: 'so4-3', name: 'Sulfat (SO42-)', method: 'Spektro UV-Vis', price: 46180, note: 'Inlab', group: 'Anorganik' },
-                        { id: 'cl3', name: 'Klorida (Cl-)', method: 'Titrasi', price: 46192, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'no3-3', name: 'Nitrat, Sebagai N (NO3-N)', method: 'Spektro UV-Vis', price: 37652, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'no2-2', name: 'Nitrit, Sebagai N (NO2-N)', method: 'Spektro UV-Vis', price: 9396, note: 'Inlab', group: 'Anorganik' },
-                        { id: 'nh3-2', name: 'Amonia (NH3-N)', method: 'Spektro UV-Vis', price: 26838, note: 'Inlab', group: 'Anorganik' },
-                        { id: 'f3', name: 'Fluorida (F-)', method: 'Spektro UV-Vis', price: 58360, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'fe2', name: 'Besi (Fe)', method: 'AAS Flame', price: 81208, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'cd3', name: 'Kadmium (Cd)', method: 'AAS Furnace', price: 81208, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'co', name: 'Kobalt (Co)', method: 'AAS Flame', price: 81208, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'mn2', name: 'Mangan (Mn)', method: 'AAS Furnace', price: 81208, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'ni', name: 'Nikel (Ni)', method: 'AAS Furnace', price: 81208, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'zn3', name: 'Seng (Zn)', method: 'AAS Furnace', price: 81208, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'cu3', name: 'Tembaga (Cu)', method: 'AAS Furnace', price: 81208, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'pb2', name: 'Timbal (Pb)', method: 'AAS Furnace', price: 81208, note: 'Inlab (PRL)', group: 'Anorganik' },
-                        { id: 'cr6', name: 'Krom Heksavalen (Cr6+)', method: 'Spektro UV-Vis', price: 79820, note: 'Inlab', group: 'Anorganik' },
-                        { id: 'oil', name: 'Oil and Grease', method: 'Gravimetri', price: 225000, note: 'Inlab', group: 'Organik' },
-                        { id: 'deterjen2', name: 'Deterjen Total (MBAS)', method: 'Spektro UV-Vis', price: 361440, note: 'Inlab', group: 'Organik' },
-                        { id: 'fenol', name: 'Fenol (C6H5OH)', method: 'Spektro UV-Vis', price: 110596, note: 'Inlab (PRL)', group: 'Organik' },
-                        { id: 'fecal', name: 'Fecal Coliform', method: '-', price: 53735, note: 'Inlab', group: 'Mikrobiologi' },
-                        { id: 'total-coliform2', name: 'Total Coliform', method: '-', price: 53735, note: 'Inlab', group: 'Mikrobiologi' }
-                    ]
-                },
-                {
-                    id: 'air-limbah',
-                    name: 'Air Limbah Domestik',
-                    icon: 'fa-recycle',
-                    description: 'Analisis air limbah domestik sesuai Permen LHK 68/2016',
-                    regulasi: 'Peraturan Menteri Lingkungan Hidup dan Kehutanan No. 68 Tahun 2016',
-                    parameters: [
-                        { id: 'ph3', name: 'pH', method: 'Direct Reading', price: 50000, note: 'Inlab', group: 'Parameter', packageAvailable: true, packagePrice: 1100000 },
-                        { id: 'bod5', name: 'Biological Oxygen Demand (BOD5)', method: 'Inkubasi', price: 250000, note: 'Inlab (PRL)', group: 'Parameter' },
-                        { id: 'cod2', name: 'Chemical Oxygen Demand (COD)', method: 'Spektro UV-Vis', price: 250000, note: 'Inlab', group: 'Parameter' },
-                        { id: 'tss2', name: 'Total Suspended Solid (TSS)', method: 'Gravimetri', price: 150000, note: 'Inlab', group: 'Parameter' },
-                        { id: 'oil2', name: 'Minyak dan Lemak', method: 'Gravimetri', price: 225000, note: 'Inlab', group: 'Parameter' },
-                        { id: 'nh3-3', name: 'Amonia (NH3-N)', method: 'Spektro UV-Vis', price: 150000, note: 'Inlab', group: 'Parameter' },
-                        { id: 'total-coliform3', name: 'Total Coliform', method: '-', price: 250000, note: 'Subkon', group: 'Parameter' },
-                        { id: 'debit', name: 'Debit', method: 'Pengukuran', price: 125000, note: 'Inlab (PRL)', group: 'Parameter' }
-                    ]
-                },
-                {
-                    id: 'udara-ambient',
-                    name: 'Kualitas Udara Ambient',
-                    icon: 'fa-wind',
-                    description: 'Pemantauan udara ambient sesuai PP 22/2021',
-                    regulasi: 'PP No. 22 Tahun 2021 tentang Penyelenggaraan Perlindungan dan Pengelolaan Lingkungan Hidup',
-                    parameters: [
-                        { id: 'so2', name: 'Sulfur Dioksida (SO₂)', method: 'Analisis', price: 3800000, note: 'Sumatera', group: 'Parameter', packageAvailable: true },
-                        { id: 'co', name: 'Karbon Monoksida (CO)', method: 'Analisis', price: 3800000, note: 'Sumatera', group: 'Parameter' },
-                        { id: 'no2', name: 'Nitrogen Dioksida (NO₂)', method: 'Analisis', price: 3800000, note: 'Sumatera', group: 'Parameter' },
-                        { id: 'o3', name: 'Ozon (O₃)', method: 'Analisis', price: 3800000, note: 'Sumatera', group: 'Parameter' },
-                        { id: 'nmhc', name: 'Hidro Carbon Non Metana (NMHC)', method: 'Analisis', price: 3800000, note: 'Sumatera', group: 'Parameter' },
-                        { id: 'tsp', name: 'TSP (24 jam)', method: 'Analisis', price: 3800000, note: 'Sumatera', group: 'Parameter' },
-                        { id: 'pm10', name: 'PM10 (24 jam)', method: 'Analisis', price: 3800000, note: 'Sumatera', group: 'Parameter' },
-                        { id: 'pm25', name: 'PM₂.₅ (24 jam)', method: 'Analisis', price: 3800000, note: 'Sumatera', group: 'Parameter' },
-                        { id: 'pb3', name: 'Timbal (Pb)', method: 'Analisis', price: 3800000, note: 'Sumatera', group: 'Parameter' }
-                    ]
-                },
-                {
-                    id: 'tanah',
-                    name: 'Analisis Tanah',
-                    icon: 'fa-mountain',
-                    description: 'Analisis tanah untuk land aplikasi',
-                    regulasi: 'PerMen LHK no.5 Tahun 2021',
-                    parameters: [
-                        { id: 'ph-tanah', name: 'pH dalam air', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter', packageAvailable: true },
-                        { id: 'c-organik', name: 'C-organik', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'n-total', name: 'N Total', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'p-tersedia', name: 'P-tersedia', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'kation-k', name: 'Kation dapat ditukar K', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'na2', name: 'Na', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'ca2', name: 'Ca', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'mg2', name: 'Mg', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'ktk', name: 'Kapasitas Tukar Kation', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'kejenuhan', name: 'Kejenuhan Basah/KTK', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'pb-tanah', name: 'Pb', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'cu-tanah', name: 'Cu', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'zn-tanah', name: 'Zn', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'cd-tanah', name: 'Cd', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'pasir', name: 'Pasir', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'debu', name: 'Debu', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'liat', name: 'Liat', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' },
-                        { id: 'oil-tanah', name: 'Minyak & Lemak', method: 'Analisis', price: 5500000, note: 'Semesteran', group: 'Parameter' }
-                    ]
-                }
-            ]
-        };
+        // Data untuk tabel Analisis Air RO - SESUAI PERINTAH
+        const chemicalParams = [
+            { no: 1, parameter: "Kalsium (Ca)*", location: "Subkon", method: "ICP/AAS Furnace", price: "Rp 150.000", inPackage: true },
+            { no: 2, parameter: "Magnesium (Mg)*", location: "Subkon", method: "ICP/AAS Furnace", price: "Rp 150.000", inPackage: true },
+            { no: 3, parameter: "Natrium (Na)*", location: "Subkon", method: "ICP/AAS Furnace", price: "Rp 150.000", inPackage: true },
+            { no: 4, parameter: "Kalium (K)*", location: "Subkon", method: "ICP/AAS Furnace", price: "Rp 150.000", inPackage: true },
+            { no: 5, parameter: "Fluoride (F-)*", location: "Inlab (PRL)", method: "Spektro UV-Vis", price: "Rp 72.950", inPackage: true },
+            { no: 6, parameter: "Klorida (Cl)*", location: "Inlab (PRL)", method: "Direct Reading", price: "Rp 57.740", inPackage: true },
+            { no: 7, parameter: "Nitrat (NO3-N)*", location: "Inlab (PRL)", method: "Spektro UV-Vis", price: "Rp 47.065", inPackage: true },
+            { no: 8, parameter: "Sulfat (SO42-)*", location: "Inlab (PRL)", method: "Spektro UV-Vis", price: "Rp 57.725", inPackage: true },
+            { no: 9, parameter: "Tembaga (Cu)*", location: "Inlab (PRL)", method: "ICP/AAS Furnace", price: "Rp 152.165", inPackage: true },
+            { no: 10, parameter: "Barium (Ba)*", location: "Subkon", method: "ICP/AAS Furnace", price: "Rp 150.000", inPackage: true },
+            { no: 11, parameter: "Seng (Zn)*", location: "Inlab (PRL)", method: "AAS Flame", price: "Rp 152.188", inPackage: true },
+            { no: 12, parameter: "Aluminium (Al)*", location: "Subkon", method: "ICP/AAS Furnace", price: "Rp 150.000", inPackage: true },
+            { no: 13, parameter: "Arsen (As)*", location: "Subkon", method: "ICP/AAS Furnace", price: "Rp 150.000", inPackage: true },
+            { no: 14, parameter: "Timbal (Pb)*", location: "Inlab (PRL)", method: "ICP/AAS Furnace", price: "Rp 152.233", inPackage: true },
+            { no: 15, parameter: "Perak (Ag)*", location: "Subkon", method: "ICP/AAS Furnace", price: "Rp 150.000", inPackage: true },
+            { no: 16, parameter: "Kadmium (Cd)*", location: "Inlab (PRL)", method: "ICP/AAS Furnace", price: "Rp 152.345", inPackage: true },
+            { no: 17, parameter: "Kromium (Cr)*", location: "Inlab (PRL)", method: "ICP/AAS Furnace", price: "Rp 152.073", inPackage: true },
+            { no: 18, parameter: "Selenium (Se)*", location: "Subkon", method: "ICP/AAS Furnace", price: "Rp 150.000", inPackage: true },
+            { no: 19, parameter: "Raksa (Hg)*", location: "Subkon", method: "ICP/AAS Furnace", price: "Rp 150.000", inPackage: true },
+            { no: 20, parameter: "Antimon (Sb)*", location: "Subkon", method: "ICP/AAS Furnace", price: "Rp 150.000", inPackage: true },
+            { no: 21, parameter: "Klorin (Cl2)*", location: "Subkon", method: "ICP/AAS Furnace", price: "Rp 150.000", inPackage: true }
+        ];
 
-        // ===== APP STATE =====
-        let currentStep = 1;
-        let selectedCategory = null;
-        let selectedParameters = [];
-        let totalPrice = 0;
-        
-        // ===== DOM ELEMENTS =====
-        const mobileToggle = document.querySelector('.mobile-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        const contactForm = document.getElementById('contactForm');
-        const whatsappNumber = '6285693363566';
+        const microbiologicalParams = [
+            { no: 1, parameter: "Angka Kuman*", location: "Subkon", method: "-", price: "Rp 30.275", inPackage: false },
+            { no: 2, parameter: "Endotoksin*", location: "Inlab (PRL)", method: "Inkubasi", price: "Rp 1.128.008", inPackage: false }
+        ];
 
-        // ===== INITIALIZATION =====
+        // Image URLs (from Google Drive)
+        const logoUrl = "https://drive.google.com/thumbnail?id=1VMVaW4fywGHyHHptD19-j5E2uLrxX_P9&sz=w1000";
+        const profileImageUrl = "https://drive.google.com/thumbnail?id=1amx-NJoCSawBWKOX3-ziYe8rKRWBJpjT&sz=w1000";
+
+        // DOM Ready Function
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile Navigation
-            initMobileNav();
+            // Load Images
+            loadImages();
             
-            // Initialize Configurator
-            initConfigurator();
+            // Initialize Division Tabs
+            initDivisionTabs();
             
-            // Contact Form
-            initContactForm();
+            // Render Price Tables
+            renderPriceTables();
             
-            // Preload Images
-            preloadImages();
+            // Render Parameter Cards
+            renderParameterCards();
+            
+            // Initialize Navigation
+            initNavigation();
+            
+            // Initialize Form Submission
+            initFormSubmission();
+            
+            // Initialize Footer Links
+            initFooterLinks();
+            
+            // Initialize View Toggle
+            initViewToggle();
+            
+            // Initialize Mobile CTA
+            initMobileCTA();
+            
+            // Add ripple effect to buttons
+            addRippleEffect();
+            
+            // Add clickable contact interactions
+            initContactInteractions();
         });
 
-        // ===== MOBILE NAVIGATION =====
-        function initMobileNav() {
-            mobileToggle.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-                const icon = this.querySelector('i');
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
-            });
+        // Load Logo and Profile Images
+        function loadImages() {
+            // Load logo
+            const logoImg = document.createElement('img');
+            logoImg.src = logoUrl;
+            logoImg.alt = "CBI Logo";
+            logoImg.className = "logo";
+            logoImg.onload = function() {
+                const logoContainer = document.getElementById('logo-container');
+                if (logoContainer) {
+                    logoContainer.innerHTML = '';
+                    logoContainer.appendChild(logoImg);
+                    logoContainer.className = '';
+                }
+                
+                // Also update footer logo
+                const footerLogoContainer = document.getElementById('footer-logo-container');
+                if (footerLogoContainer) {
+                    footerLogoContainer.innerHTML = '';
+                    const footerLogoImg = document.createElement('img');
+                    footerLogoImg.src = logoUrl;
+                    footerLogoImg.alt = "CBI Logo";
+                    footerLogoImg.className = "footer-logo";
+                    footerLogoContainer.appendChild(footerLogoImg);
+                    footerLogoContainer.className = '';
+                }
+            };
+            
+            // Load profile image
+            const profileImg = document.createElement('img');
+            profileImg.src = profileImageUrl;
+            profileImg.alt = "Ade Apriana";
+            profileImg.className = "profile-image";
+            profileImg.onload = function() {
+                const profileContainer = document.getElementById('profile-image-container');
+                if (profileContainer) {
+                    profileContainer.innerHTML = '';
+                    profileContainer.appendChild(profileImg);
+                    profileContainer.className = '';
+                }
+            };
+            
+            // Add error handling
+            logoImg.onerror = function() {
+                console.log("Gagal memuat logo");
+            };
+            
+            profileImg.onerror = function() {
+                console.log("Gagal memuat foto profil");
+            };
+        }
 
-            // Close mobile menu when clicking links
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    mobileToggle.querySelector('i').classList.add('fa-bars');
-                    mobileToggle.querySelector('i').classList.remove('fa-times');
+        // Initialize Division Tabs
+        function initDivisionTabs() {
+            const tabs = document.querySelectorAll('.division-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show target content
+                    const contents = document.querySelectorAll('.division-content');
+                    contents.forEach(content => content.classList.remove('active'));
+                    
+                    document.getElementById(`${target}-content`).classList.add('active');
                 });
             });
         }
 
-        // ===== CONFIGURATOR FUNCTIONS =====
-        function initConfigurator() {
-            renderCategories();
-            updateStepTabs();
-        }
-
-        function renderCategories() {
-            const categoryGrid = document.getElementById('categoryGrid');
-            categoryGrid.innerHTML = '';
-
-            serviceData.categories.forEach(category => {
-                const categoryCard = document.createElement('div');
-                categoryCard.className = 'category-card';
-                categoryCard.dataset.id = category.id;
-                categoryCard.innerHTML = `
-                    <div class="category-icon">
-                        <i class="fas ${category.icon}"></i>
-                    </div>
-                    <h3>${category.name}</h3>
-                    <p>${category.description}</p>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-top: 10px;">
-                        <i class="fas fa-file-contract"></i> ${category.regulasi.substring(0, 50)}...
-                    </p>
-                `;
+        // Render Price Tables
+        function renderPriceTables() {
+            // Render chemical parameters table
+            const chemicalTableBody = document.getElementById('chemical-table-body');
+            if (chemicalTableBody) {
+                let chemicalHtml = '';
                 
-                categoryCard.addEventListener('click', () => selectCategory(category.id));
-                categoryGrid.appendChild(categoryCard);
-            });
-        }
-
-        function selectCategory(categoryId) {
-            // Remove selected class from all cards
-            document.querySelectorAll('.category-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-
-            // Add selected class to clicked card
-            const selectedCard = document.querySelector(`[data-id="${categoryId}"]`);
-            selectedCard.classList.add('selected');
-
-            // Set selected category
-            selectedCategory = serviceData.categories.find(cat => cat.id === categoryId);
-            
-            // Update UI
-            document.getElementById('currentCategoryName').textContent = 
-                `Kategori: ${selectedCategory.name} - ${selectedCategory.regulasi}`;
-        }
-
-        function renderParameters() {
-            const container = document.getElementById('parametersContainer');
-            container.innerHTML = '';
-
-            if (!selectedCategory) {
-                container.innerHTML = '<p style="text-align: center; padding: 40px; color: #64748b;">Silakan pilih kategori terlebih dahulu.</p>';
-                return;
+                chemicalParams.forEach(param => {
+                    chemicalHtml += `
+                    <tr>
+                        <td>${param.no}</td>
+                        <td>${param.parameter}</td>
+                        <td><span class="badge ${param.location.includes('Inlab') ? 'badge-inlab' : 'badge-subkon'}">${param.location}</span></td>
+                        <td>${param.method}</td>
+                        <td>${param.price}</td>
+                        <td>${param.inPackage ? '<i class="fas fa-check text-success"></i>' : ''}</td>
+                    </tr>
+                    `;
+                });
+                
+                chemicalTableBody.innerHTML = chemicalHtml;
             }
+            
+            // Render microbiological parameters table
+            const microTableBody = document.getElementById('microbiological-table-body');
+            if (microTableBody) {
+                let microHtml = '';
+                
+                microbiologicalParams.forEach(param => {
+                    microHtml += `
+                    <tr>
+                        <td>${param.no}</td>
+                        <td>${param.parameter}</td>
+                        <td><span class="badge ${param.location.includes('Inlab') ? 'badge-inlab' : 'badge-subkon'}">${param.location}</span></td>
+                        <td>${param.method}</td>
+                        <td>${param.price}</td>
+                        <td>${param.inPackage ? '<i class="fas fa-check text-success"></i>' : ''}</td>
+                    </tr>
+                    `;
+                });
+                
+                microTableBody.innerHTML = microHtml;
+            }
+        }
 
-            // Group parameters by group
-            const groups = {};
-            selectedCategory.parameters.forEach(param => {
-                const group = param.group || 'Parameter';
-                if (!groups[group]) groups[group] = [];
-                groups[group].push(param);
-            });
-
-            // Render each group
-            Object.keys(groups).forEach(groupName => {
-                const groupDiv = document.createElement('div');
-                groupDiv.className = 'parameter-group';
+        // Render Parameter Cards
+        function renderParameterCards() {
+            // Render chemical parameter cards
+            const chemicalCardsContainer = document.getElementById('chemical-cards-container');
+            if (chemicalCardsContainer) {
+                let chemicalCardsHtml = '';
                 
-                const groupTitle = document.createElement('h4');
-                groupTitle.innerHTML = `${groupName} <span class="select-all" onclick="selectAllInGroup('${groupName}')">Pilih Semua</span>`;
-                
-                const paramList = document.createElement('div');
-                paramList.className = 'parameter-list';
-                
-                groups[groupName].forEach(param => {
-                    const isSelected = selectedParameters.some(p => p.id === param.id && p.categoryId === selectedCategory.id);
-                    const paramItem = document.createElement('div');
-                    paramItem.className = `parameter-item ${isSelected ? 'selected' : ''}`;
-                    paramItem.innerHTML = `
-                        <div style="display: flex; align-items: center;">
-                            <input type="checkbox" class="parameter-checkbox" 
-                                   data-id="${param.id}" 
-                                   ${isSelected ? 'checked' : ''}
-                                   onchange="toggleParameter(this, '${param.id}', '${param.name}', ${param.price}, '${groupName}')">
-                            <div class="parameter-info">
-                                <div class="parameter-name">${param.name}</div>
-                                <div class="parameter-details">
-                                    ${param.method} • ${param.note}
-                                </div>
+                chemicalParams.forEach((param, index) => {
+                    chemicalCardsHtml += `
+                    <div class="parameter-card" style="animation-delay: ${index * 0.05}s">
+                        <div class="parameter-header">
+                            <div class="parameter-name">${param.parameter}</div>
+                            <span class="badge ${param.location.includes('Inlab') ? 'badge-inlab' : 'badge-subkon'}">${param.location}</span>
+                        </div>
+                        <div class="parameter-method">${param.method}</div>
+                        <div class="parameter-footer">
+                            <div class="parameter-price">${param.price}</div>
+                            <div class="parameter-status">
+                                <i class="fas fa-check-circle"></i> Termasuk Paket
                             </div>
                         </div>
-                        <div class="parameter-price">Rp ${formatNumber(param.price)}</div>
+                    </div>
                     `;
-                    paramList.appendChild(paramItem);
                 });
                 
-                groupDiv.appendChild(groupTitle);
-                groupDiv.appendChild(paramList);
-                container.appendChild(groupDiv);
-            });
-        }
-
-        function toggleParameter(checkbox, id, name, price, group) {
-            const paramItem = {
-                id,
-                name,
-                price,
-                categoryId: selectedCategory.id,
-                categoryName: selectedCategory.name,
-                group
-            };
-
-            if (checkbox.checked) {
-                selectedParameters.push(paramItem);
-                checkbox.closest('.parameter-item').classList.add('selected');
-            } else {
-                selectedParameters = selectedParameters.filter(p => !(p.id === id && p.categoryId === selectedCategory.id));
-                checkbox.closest('.parameter-item').classList.remove('selected');
+                chemicalCardsContainer.innerHTML = chemicalCardsHtml;
             }
-
-            updateTotalPrice();
+            
+            // Render microbiological parameter cards
+            const microCardsContainer = document.getElementById('microbiological-cards-container');
+            if (microCardsContainer) {
+                let microCardsHtml = '';
+                
+                microbiologicalParams.forEach((param, index) => {
+                    microCardsHtml += `
+                    <div class="parameter-card micro-card" style="animation-delay: ${index * 0.05}s">
+                        <div class="parameter-header">
+                            <div class="parameter-name">${param.parameter}</div>
+                            <span class="badge ${param.location.includes('Inlab') ? 'badge-inlab' : 'badge-subkon'}">${param.location}</span>
+                        </div>
+                        <div class="parameter-method">${param.method}</div>
+                        <div class="parameter-footer">
+                            <div class="parameter-price">${param.price}</div>
+                            <div class="parameter-status micro-status">
+                                <i class="fas fa-plus-circle"></i> Tambahan (Add-on)
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                });
+                
+                microCardsContainer.innerHTML = microCardsHtml;
+            }
         }
 
-        function selectAllInGroup(groupName) {
-            if (!selectedCategory) return;
-
-            // Get all parameters in this group
-            const groupParams = selectedCategory.parameters.filter(p => p.group === groupName);
+        // Initialize View Toggle
+        function initViewToggle() {
+            const toggleButtons = document.querySelectorAll('.view-toggle-btn');
+            const cardView = document.querySelector('.card-view');
+            const tableView = document.querySelector('.table-view');
             
-            // Check if all are already selected
-            const allSelected = groupParams.every(param => 
-                selectedParameters.some(p => p.id === param.id && p.categoryId === selectedCategory.id)
-            );
-
-            // Toggle selection
-            groupParams.forEach(param => {
-                const checkbox = document.querySelector(`input[data-id="${param.id}"]`);
-                if (checkbox) {
-                    if (allSelected) {
-                        // Deselect all
-                        checkbox.checked = false;
-                        toggleParameter(checkbox, param.id, param.name, param.price, groupName);
+            // Check screen width and set initial view
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                cardView.style.display = 'block';
+                tableView.style.display = 'none';
+                toggleButtons[0].classList.add('active');
+                toggleButtons[1].classList.remove('active');
+            } else {
+                cardView.style.display = 'none';
+                tableView.style.display = 'block';
+                toggleButtons[0].classList.remove('active');
+                toggleButtons[1].classList.add('active');
+            }
+            
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const view = this.getAttribute('data-view');
+                    
+                    // Update active button
+                    toggleButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show selected view
+                    if (view === 'card') {
+                        cardView.style.display = 'block';
+                        tableView.style.display = 'none';
+                        cardView.style.animation = 'fadeIn 0.5s';
                     } else {
-                        // Select all
-                        checkbox.checked = true;
-                        toggleParameter(checkbox, param.id, param.name, param.price, groupName);
+                        cardView.style.display = 'none';
+                        tableView.style.display = 'block';
+                        tableView.style.animation = 'fadeIn 0.5s';
+                    }
+                });
+            });
+            
+            // Update on window resize
+            window.addEventListener('resize', function() {
+                const isMobileNow = window.innerWidth <= 768;
+                
+                if (isMobileNow) {
+                    // If on mobile and table view is active, switch to card view
+                    if (toggleButtons[1].classList.contains('active')) {
+                        toggleButtons[0].classList.add('active');
+                        toggleButtons[1].classList.remove('active');
+                        cardView.style.display = 'block';
+                        tableView.style.display = 'none';
+                        cardView.style.animation = 'fadeIn 0.5s';
+                    }
+                } else {
+                    // If on desktop and card view is active, switch to table view
+                    if (toggleButtons[0].classList.contains('active')) {
+                        toggleButtons[0].classList.remove('active');
+                        toggleButtons[1].classList.add('active');
+                        cardView.style.display = 'none';
+                        tableView.style.display = 'block';
+                        tableView.style.animation = 'fadeIn 0.5s';
                     }
                 }
             });
         }
 
-        function updateTotalPrice() {
-            totalPrice = selectedParameters.reduce((sum, param) => sum + param.price, 0);
+        // Initialize Mobile CTA
+        function initMobileCTA() {
+            const mobileCTA = document.querySelector('.mobile-cta');
             
-            // Update display
-            document.getElementById('totalDisplay').textContent = formatNumber(totalPrice);
-            document.getElementById('subtotalDisplay').textContent = formatNumber(totalPrice);
-            document.getElementById('grandTotalDisplay').textContent = formatNumber(totalPrice);
+            // Show/hide based on scroll
+            window.addEventListener('scroll', function() {
+                if (window.innerWidth <= 768) {
+                    if (window.scrollY > 300) {
+                        mobileCTA.style.display = 'flex';
+                    } else {
+                        mobileCTA.style.display = 'none';
+                    }
+                }
+            });
         }
 
-        function renderSummary() {
-            const container = document.getElementById('selectedItems');
-            container.innerHTML = '';
-
-            if (selectedParameters.length === 0) {
-                container.innerHTML = '<p style="text-align: center; padding: 30px; color: #64748b;">Belum ada parameter yang dipilih.</p>';
-                return;
-            }
-
-            // Group by category
-            const categories = {};
-            selectedParameters.forEach(param => {
-                if (!categories[param.categoryId]) {
-                    categories[param.categoryId] = {
-                        name: param.categoryName,
-                        items: []
-                    };
-                }
-                categories[param.categoryId].items.push(param);
+        // Initialize Navigation
+        function initNavigation() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Update active nav link
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                        
+                        // Scroll to target
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
-
-            // Render each category
-            Object.values(categories).forEach(category => {
-                // Category header
-                const categoryHeader = document.createElement('div');
-                categoryHeader.style.cssText = 'font-weight: 700; color: var(--primary); margin: 20px 0 10px; padding-bottom: 5px; border-bottom: 2px solid var(--border);';
-                categoryHeader.textContent = category.name;
-                container.appendChild(categoryHeader);
-
-                // Items in category
-                category.items.forEach(item => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = 'selected-item';
-                    itemDiv.innerHTML = `
-                        <div>
-                            <div class="item-name">${item.name}</div>
-                            <div style="font-size: 0.85rem; color: #64748b;">${item.group}</div>
-                        </div>
-                        <div style="display: flex; align-items: center;">
-                            <div class="item-price">Rp ${formatNumber(item.price)}</div>
-                            <div class="remove-item" onclick="removeParameter('${item.id}', '${item.categoryId}')">
-                                <i class="fas fa-times"></i>
-                            </div>
-                        </div>
-                    `;
-                    container.appendChild(itemDiv);
+            
+            // Update active nav link on scroll
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section[id]');
+                const scrollPos = window.scrollY + 100;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
                 });
             });
         }
 
-        function removeParameter(paramId, categoryId) {
-            selectedParameters = selectedParameters.filter(p => !(p.id === paramId && p.categoryId === categoryId));
+        // Initialize Form Submission
+        function initFormSubmission() {
+            const form = document.getElementById('bookingForm');
+            if (!form) return;
             
-            // Update checkbox in step 2
-            const checkbox = document.querySelector(`input[data-id="${paramId}"]`);
-            if (checkbox) {
-                checkbox.checked = false;
-                checkbox.closest('.parameter-item').classList.remove('selected');
-            }
-            
-            // Update displays
-            renderSummary();
-            updateTotalPrice();
-        }
-
-        // ===== STEP NAVIGATION =====
-        function nextStep(step) {
-            if (step === 2 && !selectedCategory) {
-                alert('Silakan pilih kategori terlebih dahulu.');
-                return;
-            }
-            
-            if (step === 3 && selectedParameters.length === 0) {
-                alert('Silakan pilih minimal satu parameter pengujian.');
-                return;
-            }
-
-            currentStep = step;
-            updateStepTabs();
-            
-            if (step === 2) {
-                renderParameters();
-            } else if (step === 3) {
-                renderSummary();
-            }
-        }
-
-        function prevStep(step) {
-            currentStep = step;
-            updateStepTabs();
-        }
-
-        function updateStepTabs() {
-            // Update step tabs
-            document.querySelectorAll('.step-tab').forEach((tab, index) => {
-                const tabStep = parseInt(tab.dataset.step);
-                tab.classList.remove('active', 'completed');
-                
-                if (tabStep === currentStep) {
-                    tab.classList.add('active');
-                } else if (tabStep < currentStep) {
-                    tab.classList.add('completed');
-                }
-            });
-
-            // Update step panels
-            document.querySelectorAll('.step-panel').forEach((panel, index) => {
-                panel.classList.remove('active');
-                if (index === currentStep - 1) {
-                    panel.classList.add('active');
-                }
-            });
-        }
-
-        // ===== QUOTATION GENERATION =====
-        function generateQuotation() {
-            if (selectedParameters.length === 0) {
-                alert('Silakan pilih minimal satu parameter.');
-                return;
-            }
-
-            // Create quotation message
-            const timestamp = new Date().toLocaleString('id-ID', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            });
-            
-            let message = `Halo Pak Ade,\n\nSaya tertarik dengan layanan analisis berikut:\n\n`;
-            message += `*Permintaan Penawaran Layanan CBI*\n`;
-            message += `Tanggal: ${timestamp}\n\n`;
-            
-            // Group by category
-            const categories = {};
-            selectedParameters.forEach(param => {
-                if (!categories[param.categoryId]) {
-                    categories[param.categoryId] = {
-                        name: param.categoryName,
-                        items: []
-                    };
-                }
-                categories[param.categoryId].items.push(param);
-            });
-
-            Object.values(categories).forEach(category => {
-                message += `*${category.name}:*\n`;
-                let categoryTotal = 0;
-                
-                category.items.forEach((item, index) => {
-                    message += `${index + 1}. ${item.name} - Rp ${formatNumber(item.price)}\n`;
-                    categoryTotal += item.price;
-                });
-                
-                message += `Subtotal: Rp ${formatNumber(categoryTotal)}\n\n`;
-            });
-
-            message += `*TOTAL PENAWARAN: Rp ${formatNumber(totalPrice)}*\n\n`;
-            message += `Mohon informasi lebih lanjut mengenai:\n`;
-            message += `1. Prosedur pengambilan sampel\n`;
-            message += `2. Waktu penyelesaian analisis\n`;
-            message += `3. Pembayaran dan invoice\n\n`;
-            message += `Terima kasih.`;
-
-            // Encode for WhatsApp
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-            
-            // Open WhatsApp
-            window.open(whatsappUrl, '_blank');
-        }
-
-        // ===== CONTACT FORM =====
-        function initContactForm() {
-            contactForm.addEventListener('submit', function(e) {
+            form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
                 // Get form data
-                const name = document.getElementById('name').value;
-                const company = document.getElementById('company').value;
-                const email = document.getElementById('email').value;
-                const phone = document.getElementById('phone').value;
-                const message = document.getElementById('message').value;
+                const formData = {
+                    name: document.getElementById('name').value,
+                    company: document.getElementById('company').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    division: document.getElementById('division').value,
+                    marketingContact: document.getElementById('marketingContact').value,
+                    message: document.getElementById('message').value,
+                    date: new Date().toLocaleString('id-ID')
+                };
                 
-                // Create WhatsApp message
-                const whatsappMessage = `Halo Pak Ade,\n\nSaya ${name} dari ${company}.\n\n${message}\n\nEmail: ${email}\nTelepon: ${phone}\n\nMohon info lebih lanjut. Terima kasih.`;
-                
-                // Open WhatsApp
-                const encodedMessage = encodeURIComponent(whatsappMessage);
-                window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+                // Simulate form submission (in real implementation, use EmailJS or Formspree)
+                alert(`Terima kasih ${formData.name}! Permintaan penawaran untuk divisi ${formData.division} telah diterima. ${formData.marketingContact} akan menghubungi Anda dalam 1x24 jam.`);
                 
                 // Reset form
-                this.reset();
+                form.reset();
                 
-                // Show confirmation
-                alert('Terima kasih! Pesan Anda akan dikirim via WhatsApp.');
+                // Scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
         }
 
-        // ===== WHATSAPP FUNCTIONS =====
-        function openWhatsApp() {
-            const defaultMessage = encodeURIComponent("Halo Pak Ade, saya ingin berkonsultasi mengenai layanan analisis lingkungan dari CBI.");
-            window.open(`https://wa.me/${whatsappNumber}?text=${defaultMessage}`, '_blank');
-        }
-
-        // ===== UTILITY FUNCTIONS =====
-        function formatNumber(num) {
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
-
-        function preloadImages() {
-            const images = [
-                'https://drive.google.com/thumbnail?id=1amx-NJoCSawBWKOX3-ziYe8rKRWBJpjT&sz=w1000',
-                'https://drive.google.com/thumbnail?id=1VMVaW4fywGHyHHptD19-j5E2uLrxX_P9&sz=w1000'
-            ];
-            
-            images.forEach(src => {
-                const img = new Image();
-                img.src = src;
+        // Initialize Footer Links
+        function initFooterLinks() {
+            // Footer division links
+            document.querySelectorAll('a[data-division]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const division = this.getAttribute('data-division');
+                    
+                    // Switch to the corresponding division tab
+                    const tab = document.querySelector(`.division-tab[data-target="${division}"]`);
+                    if (tab) {
+                        tab.click();
+                        
+                        // Scroll to divisions section
+                        const divisionsSection = document.getElementById('divisions');
+                        if (divisionsSection) {
+                            window.scrollTo({
+                                top: divisionsSection.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
             });
         }
 
-        // ===== WINDOW LOAD =====
-        window.onload = function() {
-            // Set minimum height for step content
-            const stepContent = document.querySelector('.step-content');
-            const panels = document.querySelectorAll('.step-panel');
-            
-            let maxHeight = 0;
-            panels.forEach(panel => {
-                panel.style.display = 'block';
-                maxHeight = Math.max(maxHeight, panel.scrollHeight);
-                panel.style.display = '';
+        // Add ripple effect to buttons
+        function addRippleEffect() {
+            document.addEventListener('click', function(e) {
+                // Check if clicked element is a button or card
+                const target = e.target;
+                const button = target.closest('.btn, .parameter-card, .contact-card, .division-tab, .team-card, .brand-card, .location-card');
+                
+                if (button) {
+                    const ripple = document.createElement('span');
+                    const rect = button.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.classList.add('ripple');
+                    
+                    button.appendChild(ripple);
+                    
+                    // Remove ripple after animation
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                }
             });
-            
-            stepContent.style.minHeight = maxHeight + 100 + 'px';
+        }
+
+        // Initialize contact interactions
+        function initContactInteractions() {
+            // Make all contact items clickable
+            document.querySelectorAll('.contact-value').forEach(el => {
+                const text = el.textContent.trim();
+                if (text.includes('@')) {
+                    // Email
+                    el.parentElement.href = `mailto:${text}`;
+                } else if (text.replace(/\D/g, '').length >= 8) {
+                    // Phone number
+                    const phone = text.replace(/\D/g, '');
+                    if (phone.startsWith('0')) {
+                        el.parentElement.href = `tel:+62${phone.substring(1)}`;
+                    } else if (phone.startsWith('62')) {
+                        el.parentElement.href = `tel:+${phone}`;
+                    } else {
+                        el.parentElement.href = `tel:${phone}`;
+                    }
+                }
+            });
+        }
+
+        // Helper function to show specific division
+        window.showDivision = function(divisionId) {
+            const tab = document.querySelector(`.division-tab[data-target="${divisionId}"]`);
+            if (tab) {
+                tab.click();
+                
+                // Scroll to divisions section
+                const divisionsSection = document.getElementById('divisions');
+                if (divisionsSection) {
+                    window.scrollTo({
+                        top: divisionsSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            }
         };
+        
+        // Handle small screen compatibility
+        function handleSmallScreen() {
+            if (window.innerWidth <= 360) {
+                // Adjust font sizes for very small screens
+                document.body.style.fontSize = '0.95rem';
+                
+                // Ensure all interactive elements are touch-friendly
+                document.querySelectorAll('.btn, .nav-link, .contact-link').forEach(el => {
+                    el.style.minHeight = '44px';
+                    el.style.padding = '12px 16px';
+                });
+            }
+        }
+        
+        // Initial call
+        handleSmallScreen();
+        
+        // Listen for resize
+        window.addEventListener('resize', handleSmallScreen);
     </script>
 </body>
 </html>
