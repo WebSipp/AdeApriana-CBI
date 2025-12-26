@@ -63,7 +63,168 @@
             100% { transform: scale(4); opacity: 0; }
         }
         
-        /* Smooth transitions */
+        /* ========== UNIFIED EXPAND/COLLAPSE SYSTEM ========== */
+        .collapsible-content {
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+        }
+        
+        .collapsible-content.expanded {
+            max-height: 5000px;
+            opacity: 1;
+        }
+        
+        /* Expand/Collapse buttons - STANDARDIZED */
+        .expand-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border: 1px solid var(--primary-green);
+            background-color: var(--white);
+            color: var(--primary-green);
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 15px auto 0 auto;
+            width: 100%;
+            max-width: 250px;
+            position: relative;
+        }
+        
+        .expand-btn:hover {
+            background-color: var(--light-green);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .expand-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .expand-btn.small {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            max-width: 200px;
+        }
+        
+        /* Button besar untuk Price Section */
+        .expand-btn-large {
+            padding: 18px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(26, 117, 83, 0.3);
+            max-width: 100%;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .expand-btn-large:hover {
+            box-shadow: 0 6px 20px rgba(26, 117, 83, 0.4);
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, var(--secondary-green), var(--primary-green));
+        }
+        
+        /* Collapse All Button untuk Price Section */
+        .collapse-all-btn {
+            background-color: var(--medium-gray);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .collapse-all-btn:hover {
+            background-color: var(--dark-gray);
+        }
+        
+        /* Accordion styles */
+        .accordion-item {
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .accordion-header {
+            padding: 15px;
+            background-color: var(--light-green);
+            border: 1px solid rgba(26, 117, 83, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background-color: rgba(26, 117, 83, 0.1);
+        }
+        
+        .accordion-header h5 {
+            margin: 0;
+            color: var(--primary-green);
+        }
+        
+        .accordion-content {
+            padding: 15px;
+            background-color: var(--white);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        /* Preview text dengan gradient fade */
+        .preview-text {
+            position: relative;
+            max-height: 80px;
+            overflow: hidden;
+        }
+        
+        .preview-text:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(to top, rgba(255,255,255,0.9), transparent);
+            pointer-events: none;
+        }
+        
+        /* Division Service List */
+        .service-list.hidden-items li {
+            display: none;
+        }
+        
+        .service-list.hidden-items li:nth-child(-n+3) {
+            display: flex;
+        }
+        
+        .service-list.expanded-all li {
+            display: flex !important;
+        }
+        
+        /* Footer accordion */
+        .footer-links h5 .icon i {
+            transition: transform 0.3s ease;
+        }
+        
+        /* Smooth CSS transitions */
         .btn, .nav-link, .division-tab, .parameter-card, .team-card, .brand-card {
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
@@ -343,6 +504,7 @@
             margin-bottom: 10px;
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
         
         .location-title i {
@@ -480,9 +642,13 @@
         }
         
         .brand-logo {
-            height: 40px;
-            margin-bottom: 10px;
+            width: 100%;
+            height: 100px;
             object-fit: contain;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            padding: 10px;
         }
         
         /* Price Table Section */
@@ -561,7 +727,7 @@
             margin-bottom: 0;
         }
         
-        /* Price Explanation Text - NEW */
+        /* Price Explanation Text */
         .price-explanation {
             background-color: rgba(26, 117, 83, 0.05);
             border-left: 3px solid var(--accent-orange);
@@ -665,6 +831,24 @@
         
         .micro-status {
             color: var(--primary-blue);
+        }
+        
+        /* Parameter List untuk expandable */
+        .parameter-list-container {
+            position: relative;
+        }
+        
+        .parameter-list {
+            margin-top: 20px;
+        }
+        
+        .parameter-list-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
         }
         
         /* View Toggle */
@@ -917,11 +1101,16 @@
             color: var(--white);
             margin-bottom: 20px;
             font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .footer-links ul {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
         
         .footer-links li {
@@ -957,7 +1146,169 @@
             margin-top: 20px;
         }
         
-        /* Responsive */
+        /* ========== RESPONSIVE FIXES ========== */
+        @media (max-width: 768px) {
+            /* Collapsible system untuk mobile */
+            .collapsible-content:not(.expanded) {
+                max-height: 0;
+                opacity: 0;
+            }
+            
+            /* Team contact details - FIX KRITIS */
+            .team-contact-details {
+                display: none;
+            }
+            
+            .team-contact-details.expanded {
+                display: block !important;
+            }
+            
+            .expand-btn {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .expand-btn-large {
+                width: 100%;
+                max-width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .hero-contact-details {
+                margin-top: 15px;
+            }
+            
+            .company-description .preview-text {
+                max-height: 70px;
+                overflow: hidden;
+                position: relative;
+            }
+            
+            .company-description .preview-text:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 30px;
+                background: linear-gradient(to top, rgba(255,255,255,0.9), transparent);
+            }
+            
+            .footer-links .collapsible-content {
+                max-height: 0;
+                overflow: hidden;
+            }
+            
+            .footer-links .collapsible-content.expanded {
+                max-height: 500px;
+            }
+            
+            .desktop-expanded {
+                max-height: none !important;
+                opacity: 1 !important;
+            }
+            
+            .view-toggle {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .view-toggle-btn {
+                flex: 1;
+                justify-content: center;
+            }
+            
+            /* Hide table on mobile by default */
+            .table-view {
+                display: none;
+            }
+            
+            .card-view {
+                display: block;
+            }
+            
+            .parameter-card {
+                padding: 15px;
+                margin-bottom: 12px;
+            }
+            
+            .company-card, .location-card {
+                padding: 20px 15px;
+            }
+            
+            .parameter-name, .team-name, .location-title {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+            
+            .price-explanation {
+                font-size: 0.85rem;
+                padding: 12px;
+                margin: 15px 0;
+            }
+            
+            .mobile-cta {
+                display: flex;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            /* Desktop: semua expanded */
+            .collapsible-content {
+                max-height: none !important;
+                opacity: 1 !important;
+                overflow: visible !important;
+                display: block !important;
+            }
+            
+            /* Team contact details selalu visible di desktop */
+            .team-contact-details {
+                display: block !important;
+            }
+            
+            /* Sembunyikan expand buttons di desktop */
+            .expand-btn.mobile-only {
+                display: none !important;
+            }
+            
+            .collapse-all-btn {
+                display: none !important;
+            }
+            
+            /* Show all items di desktop */
+            .service-list.hidden-items li {
+                display: flex !important;
+            }
+            
+            .parameter-list-container .parameter-list {
+                display: block !important;
+            }
+            
+            /* Footer expanded di desktop */
+            .footer-links .collapsible-content {
+                max-height: none !important;
+                opacity: 1 !important;
+                display: block !important;
+            }
+            
+            .footer-links h5 .icon {
+                display: none !important;
+            }
+            
+            .footer-links h5 {
+                cursor: default;
+            }
+            
+            .card-view {
+                display: none;
+            }
+            
+            .table-view {
+                display: block;
+            }
+        }
+        
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2rem;
@@ -988,52 +1339,6 @@
             
             .package-price-big {
                 font-size: 2rem;
-            }
-            
-            .mobile-cta {
-                display: flex;
-            }
-            
-            /* Hide table on mobile by default */
-            .table-view {
-                display: none;
-            }
-            
-            .card-view {
-                display: block;
-            }
-            
-            /* Adjust spacing for mobile */
-            .parameter-card {
-                padding: 15px;
-                margin-bottom: 12px;
-            }
-            
-            .company-card, .location-card {
-                padding: 20px 15px;
-            }
-            
-            /* Ensure no text overflow on mobile */
-            .parameter-name, .team-name, .location-title {
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-            }
-            
-            /* Price explanation for mobile */
-            .price-explanation {
-                font-size: 0.85rem;
-                padding: 12px;
-                margin: 15px 0;
-            }
-        }
-        
-        @media (min-width: 769px) {
-            .card-view {
-                display: none;
-            }
-            
-            .table-view {
-                display: block;
             }
         }
         
@@ -1083,7 +1388,6 @@
                 justify-content: center;
             }
             
-            /* Extra small devices */
             .container {
                 padding-left: 15px;
                 padding-right: 15px;
@@ -1095,6 +1399,11 @@
             
             .parameter-card {
                 margin-bottom: 10px;
+            }
+            
+            .expand-btn {
+                min-height: 50px;
+                padding: 14px 20px;
             }
         }
         
@@ -1128,12 +1437,10 @@
                 padding: 15px;
             }
             
-            /* Ensure all text is readable */
             body {
                 font-size: 0.95rem;
             }
             
-            /* Prevent horizontal scrolling */
             .row {
                 margin-left: 0;
                 margin-right: 0;
@@ -1144,8 +1451,7 @@
                 padding-right: 12px;
             }
             
-            /* Improve touch targets */
-            .btn, .nav-link, .division-tab, .parameter-card {
+            .btn, .nav-link, .division-tab, .parameter-card, .expand-btn {
                 min-height: 44px;
             }
             
@@ -1157,23 +1463,19 @@
             }
         }
         
-        /* Prevent horizontal scroll */
         html, body {
             max-width: 100%;
             overflow-x: hidden;
         }
         
-        /* Improve spacing for better readability */
         p, li {
             margin-bottom: 0.8rem;
         }
         
-        /* Consistent spacing */
         .mb-section {
             margin-bottom: 2rem;
         }
         
-        /* Better card spacing on mobile */
         @media (max-width: 768px) {
             .parameter-card, .brand-card, .location-card {
                 margin-bottom: 15px;
@@ -1186,7 +1488,6 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <!-- Logo akan dimuat via JavaScript -->
                 <div id="logo-container" class="logo-placeholder" style="width: 50px; height: 50px; background-color: #e8f5f0; border-radius: 5px; margin-right: 10px; display: flex; align-items: center; justify-content: center; color: #1a7553; font-size: 12px;">
                     CBI Logo
                 </div>
@@ -1228,7 +1529,6 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-4 text-center">
-                    <!-- Foto profil akan dimuat via JavaScript -->
                     <div id="profile-image-container" class="profile-image-placeholder" style="width: 220px; height: 220px; border-radius: 50%; background-color: #e8f5f0; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #1a7553; border: 5px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
                         <div>Foto Profil</div>
                     </div>
@@ -1241,33 +1541,54 @@
                     
                     <div class="hero-contact">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="contact-item">
                                     <div class="contact-icon">
-                                        <i class="fas fa-phone-alt"></i>
+                                        <i class="fas fa-user"></i>
                                     </div>
                                     <div>
-                                        <div class="contact-label">Telepon</div>
-                                        <a href="tel:+6285693363566" class="contact-link">
-                                            <div class="contact-value">+62 856-9336-3566</div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="contact-item">
-                                    <div class="contact-icon">
-                                        <i class="fas fa-envelope"></i>
-                                    </div>
-                                    <div>
-                                        <div class="contact-label">Email</div>
-                                        <a href="mailto:ade.apriana@chemviro.co.id" class="contact-link">
-                                            <div class="contact-value">ade.apriana@chemviro.co.id</div>
-                                        </a>
+                                        <div class="contact-label">Kepala Cabang</div>
+                                        <div class="contact-value">Ade Apriana</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="collapsible-content hero-contact-details" id="heroContactDetails">
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <div class="contact-item">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-phone-alt"></i>
+                                        </div>
+                                        <div>
+                                            <div class="contact-label">Telepon</div>
+                                            <a href="tel:+6285693363566" class="contact-link">
+                                                <div class="contact-value">+62 856-9336-3566</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="contact-item">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div>
+                                            <div class="contact-label">Email</div>
+                                            <a href="mailto:ade.apriana@chemviro.co.id" class="contact-link">
+                                                <div class="contact-value">ade.apriana@chemviro.co.id</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="expand-btn mobile-only" data-target="heroContactDetails">
+                            <span class="btn-text">Lihat Kontak</span>
+                            <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1284,23 +1605,36 @@
                     <div class="company-card">
                         <h4>PT. Chemviro Buana Indonesia</h4>
                         <div class="slogan">"Smart Choice For Smart Solution"</div>
-                        <p>PT. Chemviro Buana Indonesia adalah perusahaan yang bergerak di bidang:</p>
-                        <ul class="service-list">
-                            <li><i class="fas fa-check-circle"></i> Jasa Konsultan Lingkungan dan K3</li>
-                            <li><i class="fas fa-check-circle"></i> Jasa Kalibrasi</li>
-                            <li><i class="fas fa-check-circle"></i> Jasa Analisa Kimia</li>
-                            <li><i class="fas fa-check-circle"></i> Perdagangan Alat Laboratorium dan Keselamatan Kerja</li>
-                        </ul>
                         
-                        <div class="vision-mission mt-4">
-                            <h5>Visi</h5>
-                            <p>Menjadi mitra terbaik bagi pihak pemerintah maupun swasta yang membutuhkan produk dan jasa kami.</p>
+                        <div class="company-description">
+                            <div class="preview-text">
+                                <p>PT. Chemviro Buana Indonesia adalah perusahaan yang bergerak di bidang:</p>
+                                <ul class="service-list">
+                                    <li><i class="fas fa-check-circle"></i> Jasa Konsultan Lingkungan dan K3</li>
+                                    <li><i class="fas fa-check-circle"></i> Jasa Kalibrasi</li>
+                                    <li><i class="fas fa-check-circle"></i> Jasa Analisa Kimia</li>
+                                    <li><i class="fas fa-check-circle"></i> Perdagangan Alat Laboratorium dan Keselamatan Kerja</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="collapsible-content" id="companyFullDescription">
+                                <div class="vision-mission mt-4">
+                                    <h5>Visi</h5>
+                                    <p>Menjadi mitra terbaik bagi pihak pemerintah maupun swasta yang membutuhkan produk dan jasa kami.</p>
+                                </div>
+                                
+                                <div class="vision-mission">
+                                    <h5>Misi</h5>
+                                    <p>Mengedepankan sikap profesionalisme dalam melayani kebutuhan pelanggan dengan tetap menjaga integritas perusahaan.</p>
+                                </div>
+                            </div>
+                            
+                            <button class="expand-btn mobile-only" data-target="companyFullDescription">
+                                <span class="btn-text">Selengkapnya</span>
+                                <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                            </button>
                         </div>
                         
-                        <div class="vision-mission">
-                            <h5>Misi</h5>
-                            <p>Mengedepankan sikap profesionalisme dalam melayani kebutuhan pelanggan dengan tetap menjaga integritas perusahaan.</p>
-                        </div>
                         <div class="timeline-badge">Berdiri sejak 2016</div>
                     </div>
                 </div>
@@ -1309,58 +1643,73 @@
                     <div class="company-card">
                         <h4 class="mb-4">Kantor & Lokasi</h4>
                         
-                        <!-- Kantor Pusat -->
-                        <div class="location-card main-office">
-                            <div class="location-title">
-                                <i class="fas fa-building"></i> Kantor Pusat
+                        <div class="accordion" id="locationAccordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header" data-bs-toggle="collapse" data-bs-target="#location1">
+                                    <h5 class="mb-0"><i class="fas fa-building me-2"></i> Kantor Pusat</h5>
+                                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div id="location1" class="accordion-content collapse">
+                                    <p>Ruko Imperium Park No.C19, Ciriung, Cibinong, Bogor 16918</p>
+                                    <a href="https://maps.google.com/?q=Ruko+Imperium+Park+No.C19,+Ciriung,+Cibinong,+Bogor+16918" 
+                                       target="_blank" 
+                                       class="btn btn-sm btn-outline-primary mt-2">
+                                        <i class="fas fa-map-marker-alt me-1"></i>Lihat di Peta
+                                    </a>
+                                </div>
                             </div>
-                            <p>Ruko Imperium Park No.C19, Ciriung, Cibinong, Bogor 16918</p>
-                            <a href="https://maps.google.com/?q=Ruko+Imperium+Park+No.C19,+Ciriung,+Cibinong,+Bogor+16918" 
-                               target="_blank" 
-                               class="btn btn-sm btn-outline-primary mt-2">
-                                <i class="fas fa-map-marker-alt me-1"></i>Lihat di Peta
-                            </a>
-                        </div>
-                        
-                        <!-- Kantor Cabang -->
-                        <div class="location-card">
-                            <div class="location-title">
-                                <i class="fas fa-map-marker-alt"></i> Cabang Pekanbaru
-                            </div>
-                            <p>Jl. Amal Mulia No.15 Labuh Baru Timur, Payung Sekaki, Pekanbaru – Riau 28282</p>
-                        </div>
-                        
-                        <div class="location-card">
-                            <div class="location-title">
-                                <i class="fas fa-map-marker-alt"></i> Cabang Lampung
-                            </div>
-                            <p>Jl. Palem VI Perum No.21 Blok 18B, Beringin Raya, Kec. Kemiling, Kota Bandar Lampung 35153</p>
-                        </div>
-                        
-                        <div class="location-card">
-                            <div class="location-title">
-                                <i class="fas fa-map-marker-alt"></i> Cabang Semarang
-                            </div>
-                            <p>Menara Suara Merdeka (GENIUS IDEA Lt 11), Jl. Pandanaran No.30, Pekunden, Kec. Semarang Tengah, Kota Semarang, Jawa Tengah 50134</p>
-                        </div>
-                        
-                        <div class="location-card">
-                            <div class="location-title">
-                                <i class="fas fa-map-marker-alt"></i> Cabang Palembang
-                            </div>
-                            <p>Town House, Jl. Malaka 3 No.35 B Kenten Bukit Sangkal Kalidoni, Kota Palembang, Sumatera Selatan</p>
                             
-                            <!-- Map hanya untuk Palembang -->
-                            <div class="map-container mt-3">
-                                <iframe 
-                                    src="https://maps.google.com/maps?q=-2.9417%2C104.7681&hl=id&z=17&output=embed" 
-                                    width="100%" 
-                                    height="250" 
-                                    style="border:0;" 
-                                    allowfullscreen="" 
-                                    loading="lazy" 
-                                    referrerpolicy="no-referrer-when-downgrade">
-                                </iframe>
+                            <div class="accordion-item">
+                                <div class="accordion-header" data-bs-toggle="collapse" data-bs-target="#location2">
+                                    <h5 class="mb-0"><i class="fas fa-map-marker-alt me-2"></i> Cabang Pekanbaru</h5>
+                                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div id="location2" class="accordion-content collapse">
+                                    <p>Jl. Amal Mulia No.15 Labuh Baru Timur, Payung Sekaki, Pekanbaru – Riau 28282</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header" data-bs-toggle="collapse" data-bs-target="#location3">
+                                    <h5 class="mb-0"><i class="fas fa-map-marker-alt me-2"></i> Cabang Lampung</h5>
+                                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div id="location3" class="accordion-content collapse">
+                                    <p>Jl. Palem VI Perum No.21 Blok 18B, Beringin Raya, Kec. Kemiling, Kota Bandar Lampung 35153</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header" data-bs-toggle="collapse" data-bs-target="#location4">
+                                    <h5 class="mb-0"><i class="fas fa-map-marker-alt me-2"></i> Cabang Semarang</h5>
+                                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div id="location4" class="accordion-content collapse">
+                                    <p>Menara Suara Merdeka (GENIUS IDEA Lt 11), Jl. Pandanaran No.30, Pekunden, Kec. Semarang Tengah, Kota Semarang, Jawa Tengah 50134</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header" data-bs-toggle="collapse" data-bs-target="#location5">
+                                    <h5 class="mb-0"><i class="fas fa-map-marker-alt me-2"></i> Cabang Palembang</h5>
+                                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div id="location5" class="accordion-content collapse">
+                                    <p>Town House, Jl. Malaka 3 No.35 B Kenten Bukit Sangkal Kalidoni, Kota Palembang, Sumatera Selatan</p>
+                                    
+                                    <!-- Map dengan koordinat yang diperbaiki -->
+                                    <div class="map-container mt-3">
+                                        <iframe 
+                                            src="https://maps.google.com/maps?q=-2.977%2C104.776&hl=id&z=17&output=embed" 
+                                            width="100%" 
+                                            height="250" 
+                                            style="border:0;" 
+                                            allowfullscreen="" 
+                                            loading="lazy" 
+                                            referrerpolicy="no-referrer-when-downgrade">
+                                        </iframe>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1375,7 +1724,6 @@
             <h2 class="section-title">Divisi Layanan</h2>
             <p class="text-center mb-5">PT. Chemviro Buana Indonesia memiliki 4 divisi utama yang melayani berbagai kebutuhan industri</p>
             
-            <!-- Division Navigation Tabs -->
             <div class="division-nav">
                 <button class="division-tab active" data-target="chemlab">
                     <div class="division-icon">
@@ -1406,14 +1754,13 @@
                 </button>
             </div>
             
-            <!-- Division Content -->
             <div class="division-content active" id="chemlab-content">
                 <div class="company-card">
                     <h4 class="text-primary">CHEMLAB - Divisi Laboratorium Penguji</h4>
                     <p class="mb-4">Divisi khusus untuk layanan analisis laboratorium dengan standar tinggi dan akreditasi lengkap.</p>
                     
                     <h5>Layanan Utama:</h5>
-                    <ul class="service-list">
+                    <ul class="service-list hidden-items" id="chemlabServicesList">
                         <li><i class="fas fa-check"></i> Jasa Analisa Lingkungan (Udara Ambien, Emisi Sumber Bergerak dan Tidak Bergerak, Air Permukaan, Air Bersih, Air Limbah, dll)</li>
                         <li><i class="fas fa-check"></i> Jasa Analisa Kesehatan Kerja (Industrial Hygiene)</li>
                         <li><i class="fas fa-check"></i> Jasa Analisa SNI Crude Palm Oil (CPO)</li>
@@ -1421,9 +1768,16 @@
                         <li><i class="fas fa-check"></i> Jasa Analisa B3</li>
                     </ul>
                     
-                    <div class="mt-4">
-                        <h5>Fasilitas Lab:</h5>
-                        <p>Laboratorium kami dilengkapi dengan peralatan modern dan tim analis berpengalaman dengan sertifikasi kompetensi.</p>
+                    <button class="expand-btn mobile-only small" data-target="chemlabServices" data-service-list="chemlabServicesList">
+                        <span class="btn-text">Lihat Semua Layanan</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    
+                    <div class="collapsible-content" id="chemlabServices">
+                        <div class="mt-4">
+                            <h5>Fasilitas Lab:</h5>
+                            <p>Laboratorium kami dilengkapi dengan peralatan modern dan tim analis berpengalaman dengan sertifikasi kompetensi.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1434,7 +1788,7 @@
                     <p class="mb-4">Divisi spesialis kalibrasi alat ukur dan instrumentasi dengan traceability ke standar nasional/internasional.</p>
                     
                     <h5>Layanan Kalibrasi:</h5>
-                    <ul class="service-list">
+                    <ul class="service-list hidden-items" id="chemcalServicesList">
                         <li><i class="fas fa-check"></i> Kalibrasi Gas Detektor (Single Gas dan Multi Gas)</li>
                         <li><i class="fas fa-check"></i> Jasa Kalibrasi Gas Analyzer (Flue Gas & CEMS)</li>
                         <li><i class="fas fa-check"></i> Kalibrasi Alat Emisi Kendaraan (Solar dan Bensin)</li>
@@ -1444,9 +1798,16 @@
                         <li><i class="fas fa-check"></i> Jasa Kalibrasi Alat Sparing/Onlimo</li>
                     </ul>
                     
-                    <div class="mt-4">
-                        <h5>Sertifikasi:</h5>
-                        <p>Laboratorium kalibrasi kami memiliki sertifikasi kompetensi dan traceability yang diakui secara nasional.</p>
+                    <button class="expand-btn mobile-only small" data-target="chemcalServices" data-service-list="chemcalServicesList">
+                        <span class="btn-text">Lihat Semua Layanan</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    
+                    <div class="collapsible-content" id="chemcalServices">
+                        <div class="mt-4">
+                            <h5>Sertifikasi:</h5>
+                            <p>Laboratorium kalibrasi kami memiliki sertifikasi kompetensi dan traceability yang diakui secara nasional.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1457,7 +1818,7 @@
                     <p class="mb-4">Divisi penyedia peralatan laboratorium, keselamatan kerja, dan monitoring system terkemuka.</p>
                     
                     <h5>Produk Unggulan:</h5>
-                    <ul class="service-list">
+                    <ul class="service-list hidden-items" id="chemtradeServicesList">
                         <li><i class="fas fa-check"></i> IAQ (Indoor Air Quality) Equipment</li>
                         <li><i class="fas fa-check"></i> AQM/AQMS (Air Quality Monitoring Systems)</li>
                         <li><i class="fas fa-check"></i> SPARING/ONLIMO/WQMS (Water Quality Monitoring Systems) sesuai PERMENLHK</li>
@@ -1468,28 +1829,29 @@
                         <li><i class="fas fa-check"></i> Furniture Laboratorium (Fume Hood, Scrubber, Meja Kerja, dll)</li>
                     </ul>
                     
-                    <div class="mt-4">
-                        <h5>Brand yang Kami Distribusikan:</h5>
-                        <div class="brand-grid">
-                            <div class="brand-card">
-                                <div class="brand-logo-placeholder" style="height: 40px; background-color: #e8f5f0; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #1a7553; margin-bottom: 10px;">
-                                    AkzoNobel
+                    <button class="expand-btn mobile-only small" data-target="chemtradeServices" data-service-list="chemtradeServicesList">
+                        <span class="btn-text">Lihat Semua Layanan</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    
+                    <div class="collapsible-content" id="chemtradeServices">
+                        <div class="mt-4">
+                            <h5>Brand yang Kami Distribusikan:</h5>
+                            <div class="brand-grid">
+                                <div class="brand-card">
+                                    <img src="https://via.placeholder.com/300x100/1a7553/ffffff?text=AkzoNobel" alt="AkzoNobel" class="brand-logo">
+                                    <p class="small mb-0">AkzoNobel - Coating/cat pelapis industri</p>
                                 </div>
-                                <p class="small mb-0">Coating/cat pelapis industri (Intershield 300, Intersleek 731, Interbond 201, Intergard 740)</p>
-                            </div>
-                            
-                            <div class="brand-card">
-                                <div class="brand-logo-placeholder" style="height: 40px; background-color: #e8f5f0; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #1a7553; margin-bottom: 10px;">
-                                    BroadSensor
+                                
+                                <div class="brand-card">
+                                    <img src="https://via.placeholder.com/300x100/2c5aa0/ffffff?text=BroadSensor" alt="BroadSensor" class="brand-logo">
+                                    <p class="small mb-0">BroadSensor - Water Quality Monitoring Systems</p>
                                 </div>
-                                <p class="small mb-0">Water Quality Monitoring (Multiparameter Water Quality Sonde, UV254 5-BEAMS COD Sensor)</p>
-                            </div>
-                            
-                            <div class="brand-card">
-                                <div class="brand-logo-placeholder" style="height: 40px; background-color: #e8f5f0; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #1a7553; margin-bottom: 10px;">
-                                    Pulsar
+                                
+                                <div class="brand-card">
+                                    <img src="https://via.placeholder.com/300x100/f57c00/ffffff?text=Pulsar" alt="Pulsar" class="brand-logo">
+                                    <p class="small mb-0">Pulsar - Flow Meters and Measurement</p>
                                 </div>
-                                <p class="small mb-0">Flow Meters (Transit Time Flow Meter, DBMACH3, MicroFlow-i)</p>
                             </div>
                         </div>
                     </div>
@@ -1502,19 +1864,29 @@
                     <p class="mb-4">Divisi konsultan profesional untuk pengelolaan lingkungan, K3, dan sistem manajemen.</p>
                     
                     <h5>Layanan Konsultasi:</h5>
-                    <ul class="service-list">
+                    <ul class="service-list hidden-items" id="chemconsServicesList">
                         <li><i class="fas fa-check"></i> <strong>Health Risk Assessment (HRA):</strong> Membantu penyusunan dokumen HRA untuk mengidentifikasi bahaya kesehatan kerja (Permenaker 05 Tahun 2018)</li>
                         <li><i class="fas fa-check"></i> <strong>Assessment Ergonomic:</strong> Penilaian postur kerja di tempat kerja (Permenaker 05 Tahun 2018)</li>
                         <li><i class="fas fa-check"></i> <strong>Assessment Psychosocial:</strong> Penilaian bahaya kesehatan kerja akibat faktor psikologis karyawan (Permenaker 05 Tahun 2018)</li>
                         <li><i class="fas fa-check"></i> <strong>Audit Sistem K3:</strong> Membangun sistem Kesehatan dan Keselamatan Kerja (K3) dan dokumen safety (CHSEM) sesuai PP No. 50 Tahun 2012</li>
-                        <li><i class="fas fa-check"></i> <strong>Audit Proper:</strong> Konsultasi program PROPER pemerintah, membangun sistem dan implementasi</li>
-                        <li><i class="fas fa-check"></i> <strong>Konsultan ISO 17025:</strong> Membangun sistem dan implementasi Manajemen Laboratorium hingga mendapat Sertifikat Akreditasi ISO 17025</li>
-                        <li><i class="fas fa-check"></i> <strong>Corrosion Assessment:</strong> Analisa tingkat korosi pada bangunan dan infrastruktur, solusi pencegahan korosi</li>
                     </ul>
                     
-                    <div class="mt-4">
-                        <h5>Tim Ahli:</h5>
-                        <p>Didukung oleh tim konsultan bersertifikasi dengan pengalaman luas di berbagai sektor industri.</p>
+                    <button class="expand-btn mobile-only small" data-target="chemconsServices" data-service-list="chemconsServicesList">
+                        <span class="btn-text">Lihat Semua Layanan</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    
+                    <div class="collapsible-content" id="chemconsServices">
+                        <ul class="service-list">
+                            <li><i class="fas fa-check"></i> <strong>Audit Proper:</strong> Konsultasi program PROPER pemerintah, membangun sistem dan implementasi</li>
+                            <li><i class="fas fa-check"></i> <strong>Konsultan ISO 17025:</strong> Membangun sistem dan implementasi Manajemen Laboratorium hingga mendapat Sertifikat Akreditasi ISO 17025</li>
+                            <li><i class="fas fa-check"></i> <strong>Corrosion Assessment:</strong> Analisa tingkat korosi pada bangunan dan infrastruktur, solusi pencegahan korosi</li>
+                        </ul>
+                        
+                        <div class="mt-4">
+                            <h5>Tim Ahli:</h5>
+                            <p>Didukung oleh tim konsultan bersertifikasi dengan pengalaman luas di berbagai sektor industri.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1530,7 +1902,6 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="price-card">
-                        <!-- Package Summary -->
                         <div class="package-summary">
                             <div class="row align-items-center">
                                 <div class="col-md-8">
@@ -1543,13 +1914,11 @@
                             </div>
                         </div>
                         
-                        <!-- NEW: Price Explanation Text -->
                         <div class="price-explanation">
                             <i class="fas fa-info-circle"></i>
                             <strong>Harga satuan ditampilkan sebagai referensi.</strong> Paket menggunakan harga bundling khusus dan bukan hasil penjumlahan harga satuan.
                         </div>
                         
-                        <!-- Important Information -->
                         <div class="package-details">
                             <h5><i class="fas fa-info-circle me-2"></i>Informasi Penting:</h5>
                             <ul class="mb-0">
@@ -1560,85 +1929,101 @@
                             </ul>
                         </div>
                         
-                        <!-- View Toggle -->
-                        <div class="text-center mb-4">
-                            <div class="view-toggle">
-                                <button class="view-toggle-btn active" data-view="card">
-                                    <i class="fas fa-th-large"></i> Versi Ringkas
-                                </button>
-                                <button class="view-toggle-btn" data-view="table">
-                                    <i class="fas fa-table"></i> Versi Tabel
-                                </button>
+                        <div class="text-center my-4">
+                            <button class="expand-btn expand-btn-large mobile-only" id="mainExpandButton" data-target="allParametersList">
+                                <span class="btn-text">Lihat Daftar Parameter Lengkap (23 Parameter)</span>
+                                <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                            </button>
+                        </div>
+                        
+                        <div class="collapsible-content" id="allParametersList">
+                            <div class="text-center mb-4">
+                                <div class="view-toggle">
+                                    <button class="view-toggle-btn active" data-view="card">
+                                        <i class="fas fa-th-large"></i> Versi Ringkas
+                                    </button>
+                                    <button class="view-toggle-btn" data-view="table">
+                                        <i class="fas fa-table"></i> Versi Tabel
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="card-view">
+                                <div class="price-explanation mb-4">
+                                    <i class="fas fa-info-circle"></i>
+                                    <strong>Harga satuan ditampilkan sebagai referensi.</strong> Paket menggunakan harga bundling khusus dan bukan hasil penjumlahan harga satuan.
+                                </div>
+                                
+                                <div class="parameter-list-container">
+                                    <div class="parameter-list-title">
+                                        <h5 class="mb-0">Parameter Kimia (21 Parameter – Termasuk Paket)</h5>
+                                        <button class="collapse-all-btn mobile-only" id="collapseAllButton">
+                                            <i class="fas fa-compress-alt"></i> Collapse All
+                                        </button>
+                                    </div>
+                                    
+                                    <div id="chemical-cards-container" class="parameter-list">
+                                        <!-- Chemical parameter cards will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                                
+                                <div class="parameter-list-container mt-5">
+                                    <div class="parameter-list-title">
+                                        <h5 class="mb-0">Parameter Mikrobiologi (2 Parameter – Add-on)</h5>
+                                    </div>
+                                    
+                                    <div id="microbiological-cards-container" class="parameter-list">
+                                        <!-- Microbiological parameter cards will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="table-view">
+                                <div class="price-explanation mb-4">
+                                    <i class="fas fa-info-circle"></i>
+                                    <strong>Harga satuan ditampilkan sebagai referensi.</strong> Paket menggunakan harga bundling khusus dan bukan hasil penjumlahan harga satuan.
+                                </div>
+                                
+                                <h5 class="mt-4 mb-3">Parameter Kimia (21 Parameter)</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th width="5%">No</th>
+                                                <th width="25%">Parameter Uji</th>
+                                                <th width="15%">Lokasi</th>
+                                                <th width="25%">Metode</th>
+                                                <th width="15%">Harga Satuan</th>
+                                                <th width="15%">Paket</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="chemical-table-body">
+                                            <!-- Chemical parameters will be populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h5 class="mt-5 mb-3">Parameter Mikrobiologi (2 Parameter)</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th width="5%">No</th>
+                                                <th width="25%">Parameter Uji</th>
+                                                <th width="15%">Lokasi</th>
+                                                <th width="25%">Metode</th>
+                                                <th width="15%">Harga Satuan</th>
+                                                <th width="15%">Paket</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="microbiological-table-body">
+                                            <!-- Microbiological parameters will be populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         
-                        <!-- Card View (Mobile) -->
-                        <div class="card-view">
-                            <!-- Price explanation for mobile view -->
-                            <div class="price-explanation mb-4">
-                                <i class="fas fa-info-circle"></i>
-                                <strong>Harga satuan ditampilkan sebagai referensi.</strong> Paket menggunakan harga bundling khusus dan bukan hasil penjumlahan harga satuan.
-                            </div>
-                            
-                            <h5 class="mb-4">Parameter Kimia (21 Parameter – Termasuk Paket)</h5>
-                            <div id="chemical-cards-container">
-                                <!-- Chemical parameter cards will be populated by JavaScript -->
-                            </div>
-                            
-                            <h5 class="mt-5 mb-4">Parameter Mikrobiologi (2 Parameter – Add-on)</h5>
-                            <div id="microbiological-cards-container">
-                                <!-- Microbiological parameter cards will be populated by JavaScript -->
-                            </div>
-                        </div>
-                        
-                        <!-- Table View (Desktop) -->
-                        <div class="table-view">
-                            <!-- Price explanation for table view -->
-                            <div class="price-explanation mb-4">
-                                <i class="fas fa-info-circle"></i>
-                                <strong>Harga satuan ditampilkan sebagai referensi.</strong> Paket menggunakan harga bundling khusus dan bukan hasil penjumlahan harga satuan.
-                            </div>
-                            
-                            <h5 class="mt-4 mb-3">Parameter Kimia (21 Parameter)</h5>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th width="5%">No</th>
-                                            <th width="25%">Parameter Uji</th>
-                                            <th width="15%">Lokasi</th>
-                                            <th width="25%">Metode</th>
-                                            <th width="15%">Harga Satuan</th>
-                                            <th width="15%">Paket</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="chemical-table-body">
-                                        <!-- Chemical parameters will be populated by JavaScript -->
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <h5 class="mt-5 mb-3">Parameter Mikrobiologi (2 Parameter)</h5>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th width="5%">No</th>
-                                            <th width="25%">Parameter Uji</th>
-                                            <th width="15%">Lokasi</th>
-                                            <th width="25%">Metode</th>
-                                            <th width="15%">Harga Satuan</th>
-                                            <th width="15%">Paket</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="microbiological-table-body">
-                                        <!-- Microbiological parameters will be populated by JavaScript -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <!-- Additional Information -->
                         <div class="alert alert-info mt-4">
                             <h5><i class="fas fa-info-circle me-2"></i>Keterangan:</h5>
                             <ul class="mb-0">
@@ -1660,7 +2045,6 @@
             <h2 class="section-title">Tim Marketing & Pemesanan</h2>
             <p class="text-center mb-5">Hubungi tim marketing kami untuk konsultasi dan pemesanan layanan</p>
             
-            <!-- Marketing Team -->
             <div class="row mb-5">
                 <div class="col-md-4 mb-4">
                     <div class="team-card">
@@ -1669,10 +2053,11 @@
                         </div>
                         <div class="team-name">Ade Apriana</div>
                         <div class="team-position">Kepala Cabang Palembang</div>
-                        <div class="team-contact">
+                        
+                        <div class="team-contact-details collapsible-content" id="teamContact1">
                             <p class="mb-1">
                                 <a href="tel:+6285693363566" class="contact-link">
-                                    <i class="fas fa-phone-alt me-2"></i>085693363566
+                                    <i class="fas fa-phone-alt me-2"></i>+62 856-9336-3566
                                 </a>
                             </p>
                             <p class="mb-3">
@@ -1684,6 +2069,11 @@
                                 <i class="fab fa-whatsapp me-2"></i>Chat via WhatsApp
                             </a>
                         </div>
+                        
+                        <button class="expand-btn mobile-only small mt-3" data-target="teamContact1">
+                            <span class="btn-text">Lihat Kontak</span>
+                            <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                        </button>
                     </div>
                 </div>
                 
@@ -1694,10 +2084,11 @@
                         </div>
                         <div class="team-name">Lambang Mahmuddan K.</div>
                         <div class="team-position">Marketing</div>
-                        <div class="team-contact">
+                        
+                        <div class="team-contact-details collapsible-content" id="teamContact2">
                             <p class="mb-1">
                                 <a href="tel:+6282177598264" class="contact-link">
-                                    <i class="fas fa-phone-alt me-2"></i>082177598264
+                                    <i class="fas fa-phone-alt me-2"></i>+62 821-7775-98264
                                 </a>
                             </p>
                             <p class="mb-3">
@@ -1709,6 +2100,11 @@
                                 <i class="fab fa-whatsapp me-2"></i>Chat via WhatsApp
                             </a>
                         </div>
+                        
+                        <button class="expand-btn mobile-only small mt-3" data-target="teamContact2">
+                            <span class="btn-text">Lihat Kontak</span>
+                            <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                        </button>
                     </div>
                 </div>
                 
@@ -1719,10 +2115,11 @@
                         </div>
                         <div class="team-name">Nur Arief Febrianto</div>
                         <div class="team-position">Marketing</div>
-                        <div class="team-contact">
+                        
+                        <div class="team-contact-details collapsible-content" id="teamContact3">
                             <p class="mb-1">
                                 <a href="tel:+6285345746778" class="contact-link">
-                                    <i class="fas fa-phone-alt me-2"></i>085345746778
+                                    <i class="fas fa-phone-alt me-2"></i>+62 853-4574-6778
                                 </a>
                             </p>
                             <p class="mb-3">
@@ -1734,11 +2131,15 @@
                                 <i class="fab fa-whatsapp me-2"></i>Chat via WhatsApp
                             </a>
                         </div>
+                        
+                        <button class="expand-btn mobile-only small mt-3" data-target="teamContact3">
+                            <span class="btn-text">Lihat Kontak</span>
+                            <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                        </button>
                     </div>
                 </div>
             </div>
             
-            <!-- Booking Form -->
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="booking-card">
@@ -1792,9 +2193,9 @@
                                         <label for="marketingContact" class="form-label">Ingin Dihubungi oleh *</label>
                                         <select class="form-select" id="marketingContact" required>
                                             <option value="">Pilih Kontak Marketing</option>
-                                            <option value="Ade Apriana">Ade Apriana (085693363566)</option>
-                                            <option value="Lambang Mahmuddan K.">Lambang Mahmuddan K. (082177598264)</option>
-                                            <option value="Nur Arief Febrianto">Nur Arief Febrianto (085345746778)</option>
+                                            <option value="Ade Apriana,+6285693363566">Ade Apriana (+62 856-9336-3566)</option>
+                                            <option value="Lambang Mahmuddan K.,+6282177598264">Lambang Mahmuddan K. (+62 821-7775-98264)</option>
+                                            <option value="Nur Arief Febrianto,+6285345746778">Nur Arief Febrianto (+62 853-4574-6778)</option>
                                         </select>
                                     </div>
                                     
@@ -1861,11 +2262,11 @@
                     </div>
                 </a>
                 
-                <a href="tel:02187914212" class="contact-link">
+                <a href="tel:+622187914212" class="contact-link">
                     <div class="contact-card">
                         <i class="fas fa-phone-alt"></i>
                         <h5>Telepon/Fax</h5>
-                        <p>(021) 8791 4212</p>
+                        <p>+62 (021) 8791 4212</p>
                     </div>
                 </a>
                 
@@ -1893,7 +2294,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <!-- Logo akan dimuat via JavaScript -->
                     <div id="footer-logo-container" class="footer-logo-placeholder" style="width: 150px; height: 60px; background-color: rgba(255,255,255,0.1); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 15px;">
                         CBI Logo
                     </div>
@@ -1907,37 +2307,52 @@
                 
                 <div class="col-lg-2 col-md-6 mb-4">
                     <div class="footer-links">
-                        <h5>Menu</h5>
-                        <ul>
-                            <li><a href="#home">Beranda</a></li>
-                            <li><a href="#profile">Profil</a></li>
-                            <li><a href="#divisions">Divisi</a></li>
-                            <li><a href="#pricing">Harga</a></li>
-                            <li><a href="#booking">Pemesanan</a></li>
-                        </ul>
+                        <h5 class="mobile-collapsible">
+                            Menu
+                            <span class="icon mobile-only"><i class="fas fa-chevron-down"></i></span>
+                        </h5>
+                        <div class="collapsible-content">
+                            <ul>
+                                <li><a href="#home">Beranda</a></li>
+                                <li><a href="#profile">Profil</a></li>
+                                <li><a href="#divisions">Divisi</a></li>
+                                <li><a href="#pricing">Harga</a></li>
+                                <li><a href="#booking">Pemesanan</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="footer-links">
-                        <h5>Divisi Layanan</h5>
-                        <ul>
-                            <li><a href="#divisions" data-division="chemlab">CHEMLAB - Lab Services</a></li>
-                            <li><a href="#divisions" data-division="chemcal">CHEMCAL - Calibration</a></li>
-                            <li><a href="#divisions" data-division="chemtrade">CHEMTRADE - Trading</a></li>
-                            <li><a href="#divisions" data-division="chemcons">CHEMCONS - Consultant</a></li>
-                        </ul>
+                        <h5 class="mobile-collapsible">
+                            Divisi Layanan
+                            <span class="icon mobile-only"><i class="fas fa-chevron-down"></i></span>
+                        </h5>
+                        <div class="collapsible-content">
+                            <ul>
+                                <li><a href="#divisions" data-division="chemlab">CHEMLAB - Lab Services</a></li>
+                                <li><a href="#divisions" data-division="chemcal">CHEMCAL - Calibration</a></li>
+                                <li><a href="#divisions" data-division="chemtrade">CHEMTRADE - Trading</a></li>
+                                <li><a href="#divisions" data-division="chemcons">CHEMCONS - Consultant</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="footer-links">
-                        <h5>Kontak</h5>
-                        <ul>
-                            <li><a href="tel:02187914212"><i class="fas fa-phone-alt me-2"></i>(021) 8791 4212</a></li>
-                            <li><a href="mailto:marketing@chemviro.co.id"><i class="fas fa-envelope me-2"></i>marketing@chemviro.co.id</a></li>
-                            <li><a href="https://maps.google.com/?q=Bogor,+Jawa+Barat" target="_blank"><i class="fas fa-map-marker-alt me-2"></i>Bogor, Jawa Barat</a></li>
-                        </ul>
+                        <h5 class="mobile-collapsible">
+                            Kontak
+                            <span class="icon mobile-only"><i class="fas fa-chevron-down"></i></span>
+                        </h5>
+                        <div class="collapsible-content">
+                            <ul>
+                                <li><a href="tel:+622187914212"><i class="fas fa-phone-alt me-2"></i>+62 (021) 8791 4212</a></li>
+                                <li><a href="mailto:marketing@chemviro.co.id"><i class="fas fa-envelope me-2"></i>marketing@chemviro.co.id</a></li>
+                                <li><a href="https://maps.google.com/?q=Bogor,+Jawa+Barat" target="_blank"><i class="fas fa-map-marker-alt me-2"></i>Bogor, Jawa Barat</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1962,7 +2377,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Data untuk tabel Analisis Air RO - SESUAI PERINTAH
+        // Data untuk tabel Analisis Air RO
         const chemicalParams = [
             { no: 1, parameter: "Kalsium (Ca)*", location: "Subkon", method: "ICP/AAS Furnace", price: "Rp 150.000", inPackage: true },
             { no: 2, parameter: "Magnesium (Mg)*", location: "Subkon", method: "ICP/AAS Furnace", price: "Rp 150.000", inPackage: true },
@@ -1992,47 +2407,292 @@
             { no: 2, parameter: "Endotoksin*", location: "Inlab (PRL)", method: "Inkubasi", price: "Rp 1.128.008", inPackage: false }
         ];
 
-        // Image URLs (from Google Drive)
+        // Image URLs
         const logoUrl = "https://drive.google.com/thumbnail?id=1VMVaW4fywGHyHHptD19-j5E2uLrxX_P9&sz=w1000";
         const profileImageUrl = "https://drive.google.com/thumbnail?id=1amx-NJoCSawBWKOX3-ziYe8rKRWBJpjT&sz=w1000";
 
+        // State management untuk expand/collapse
+        const expandState = {};
+
         // DOM Ready Function
         document.addEventListener('DOMContentLoaded', function() {
-            // Load Images
             loadImages();
-            
-            // Initialize Division Tabs
             initDivisionTabs();
-            
-            // Render Price Tables
             renderPriceTables();
-            
-            // Render Parameter Cards
             renderParameterCards();
-            
-            // Initialize Navigation
             initNavigation();
-            
-            // Initialize Form Submission
             initFormSubmission();
-            
-            // Initialize Footer Links
             initFooterLinks();
-            
-            // Initialize View Toggle
             initViewToggle();
-            
-            // Initialize Mobile CTA
             initMobileCTA();
-            
-            // Add ripple effect to buttons
             addRippleEffect();
-            
-            // Add clickable contact interactions
             initContactInteractions();
+            initExpandCollapse();
+            initLocationAccordion();
+            initFooterCollapsible();
+            handleResponsiveBehavior();
         });
 
-        // Load Logo and Profile Images
+        // ========== UNIFIED EXPAND/COLLAPSE SYSTEM ==========
+        // Unified function untuk update semua tombol expand/collapse
+        function updateExpandButtonState(button, isExpanded) {
+            // Update button class
+            if (isExpanded) {
+                button.classList.add('expanded');
+            } else {
+                button.classList.remove('expanded');
+            }
+            
+            // Update button text dengan semua kemungkinan
+            const btnText = button.querySelector('.btn-text');
+            if (btnText) {
+                let currentText = btnText.textContent;
+                
+                if (isExpanded) {
+                    // Expand state
+                    if (currentText.includes('Lihat Kontak')) {
+                        btnText.textContent = 'Sembunyikan Kontak';
+                    } else if (currentText.includes('Lihat Semua Layanan')) {
+                        btnText.textContent = 'Sembunyikan Layanan';
+                    } else if (currentText.includes('Lihat Daftar Parameter')) {
+                        btnText.textContent = 'Sembunyikan Daftar Parameter';
+                    } else if (currentText === 'Selengkapnya') {
+                        btnText.textContent = 'Sembunyikan';
+                    } else if (currentText === 'Lihat Kontak') {
+                        btnText.textContent = 'Sembunyikan Kontak';
+                    }
+                } else {
+                    // Collapse state
+                    if (currentText.includes('Sembunyikan Kontak')) {
+                        btnText.textContent = 'Lihat Kontak';
+                    } else if (currentText.includes('Sembunyikan Layanan')) {
+                        btnText.textContent = 'Lihat Semua Layanan';
+                    } else if (currentText.includes('Sembunyikan Daftar Parameter')) {
+                        btnText.textContent = 'Lihat Daftar Parameter Lengkap (23 Parameter)';
+                    } else if (currentText === 'Sembunyikan') {
+                        btnText.textContent = 'Selengkapnya';
+                    }
+                }
+            }
+            
+            // Update icon - GANTI CLASS, bukan rotate
+            const icon = button.querySelector('.icon i');
+            if (icon) {
+                if (isExpanded) {
+                    // Ganti dari down ke up
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    // Ganti dari up ke down
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            }
+        }
+
+        function initExpandCollapse() {
+            // Unified expand handler untuk semua tombol
+            document.querySelectorAll('.expand-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const targetId = this.getAttribute('data-target');
+                    const serviceListId = this.getAttribute('data-service-list');
+                    
+                    if (serviceListId) {
+                        // Handle service list expansion
+                        handleServiceListExpansion(this, serviceListId);
+                    } else if (targetId) {
+                        // Handle regular collapsible content
+                        handleCollapsibleExpansion(this, targetId);
+                    }
+                });
+            });
+            
+            // Collapse All button untuk price section
+            const collapseAllBtn = document.getElementById('collapseAllButton');
+            if (collapseAllBtn) {
+                collapseAllBtn.addEventListener('click', function() {
+                    const allParamsList = document.getElementById('allParametersList');
+                    const mainExpandBtn = document.getElementById('mainExpandButton');
+                    
+                    if (allParamsList && allParamsList.classList.contains('expanded')) {
+                        // Collapse content
+                        allParamsList.classList.remove('expanded');
+                        
+                        // Update main button state
+                        if (mainExpandBtn) {
+                            updateExpandButtonState(mainExpandBtn, false);
+                        }
+                        
+                        // Update state
+                        expandState['allParametersList'] = false;
+                    }
+                });
+            }
+        }
+
+        function handleServiceListExpansion(button, serviceListId) {
+            const serviceList = document.getElementById(serviceListId);
+            if (!serviceList) return;
+            
+            const isExpanded = serviceList.classList.contains('expanded-all');
+            
+            if (isExpanded) {
+                // Collapse service list
+                serviceList.classList.remove('expanded-all');
+                updateExpandButtonState(button, false);
+            } else {
+                // Expand service list
+                serviceList.classList.add('expanded-all');
+                updateExpandButtonState(button, true);
+            }
+            
+            // Simpan state
+            expandState[serviceListId] = !isExpanded;
+        }
+
+        function handleCollapsibleExpansion(button, targetId) {
+            const targetElement = document.getElementById(targetId);
+            if (!targetElement) return;
+            
+            const isExpanded = targetElement.classList.contains('expanded');
+            
+            if (isExpanded) {
+                // Collapse
+                collapseElement(targetElement, button);
+            } else {
+                // Expand
+                expandElement(targetElement, button);
+            }
+            
+            // Simpan state
+            expandState[targetId] = !isExpanded;
+        }
+
+        function expandElement(element, button) {
+            element.classList.add('expanded');
+            if (button) {
+                updateExpandButtonState(button, true);
+                
+                // Smooth scroll ke konten yang di-expand
+                setTimeout(() => {
+                    element.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest'
+                    });
+                }, 300);
+            }
+        }
+
+        function collapseElement(element, button) {
+            element.classList.remove('expanded');
+            if (button) {
+                updateExpandButtonState(button, false);
+            }
+        }
+
+        function initFooterCollapsible() {
+            const footerHeaders = document.querySelectorAll('.footer-links h5.mobile-collapsible');
+            
+            footerHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        const content = this.nextElementSibling;
+                        const icon = this.querySelector('.icon i');
+                        const isExpanded = content.classList.contains('expanded');
+                        
+                        if (isExpanded) {
+                            collapseElement(content, this);
+                        } else {
+                            expandElement(content, this);
+                        }
+                    }
+                });
+            });
+        }
+
+        function handleResponsiveBehavior() {
+            function handleDesktopExpansion() {
+                const isDesktop = window.innerWidth > 768;
+                
+                if (isDesktop) {
+                    // Expand all collapsible content di desktop
+                    document.querySelectorAll('.collapsible-content').forEach(content => {
+                        content.classList.add('expanded', 'desktop-expanded');
+                    });
+                    
+                    // Expand all service lists di desktop
+                    document.querySelectorAll('.service-list.hidden-items').forEach(list => {
+                        list.classList.add('expanded-all');
+                    });
+                    
+                    // Reset semua expand buttons di desktop
+                    document.querySelectorAll('.expand-btn.mobile-only').forEach(button => {
+                        button.style.display = 'none';
+                    });
+                    
+                    // Reset footer headers
+                    document.querySelectorAll('.footer-links h5.mobile-collapsible').forEach(header => {
+                        header.classList.remove('expanded');
+                        const icon = header.querySelector('.icon i');
+                        if (icon) {
+                            icon.className = 'fas fa-chevron-down';
+                        }
+                    });
+                } else {
+                    // Collapse semua di mobile (default)
+                    document.querySelectorAll('.collapsible-content').forEach(content => {
+                        if (!content.classList.contains('desktop-expanded')) {
+                            content.classList.remove('expanded');
+                        }
+                    });
+                    
+                    // Collapse service lists di mobile
+                    document.querySelectorAll('.service-list.hidden-items').forEach(list => {
+                        list.classList.remove('expanded-all');
+                    });
+                    
+                    // Reset semua expand buttons di mobile
+                    document.querySelectorAll('.expand-btn.mobile-only').forEach(button => {
+                        button.style.display = 'flex';
+                        button.classList.remove('expanded');
+                        
+                        // Reset button text dan icon menggunakan fungsi unified
+                        updateExpandButtonState(button, false);
+                    });
+                    
+                    // Reset footer headers
+                    document.querySelectorAll('.footer-links h5.mobile-collapsible').forEach(header => {
+                        header.classList.remove('expanded');
+                        const icon = header.querySelector('.icon i');
+                        if (icon) {
+                            icon.className = 'fas fa-chevron-down';
+                        }
+                    });
+                }
+            }
+            
+            handleDesktopExpansion();
+            window.addEventListener('resize', handleDesktopExpansion);
+        }
+
+        function initLocationAccordion() {
+            const locationHeaders = document.querySelectorAll('.accordion-header');
+            locationHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const icon = this.querySelector('.icon i');
+                    if (icon) {
+                        setTimeout(() => {
+                            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                            icon.className = isExpanded ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
+                        }, 50);
+                    }
+                });
+            });
+        }
+
         function loadImages() {
             // Load logo
             const logoImg = document.createElement('img');
@@ -2047,7 +2707,6 @@
                     logoContainer.className = '';
                 }
                 
-                // Also update footer logo
                 const footerLogoContainer = document.getElementById('footer-logo-container');
                 if (footerLogoContainer) {
                     footerLogoContainer.innerHTML = '';
@@ -2058,6 +2717,10 @@
                     footerLogoContainer.appendChild(footerLogoImg);
                     footerLogoContainer.className = '';
                 }
+            };
+            
+            logoImg.onerror = function() {
+                console.log("Gagal memuat logo");
             };
             
             // Load profile image
@@ -2074,28 +2737,20 @@
                 }
             };
             
-            // Add error handling
-            logoImg.onerror = function() {
-                console.log("Gagal memuat logo");
-            };
-            
             profileImg.onerror = function() {
                 console.log("Gagal memuat foto profil");
             };
         }
 
-        // Initialize Division Tabs
         function initDivisionTabs() {
             const tabs = document.querySelectorAll('.division-tab');
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
                     const target = this.getAttribute('data-target');
                     
-                    // Update active tab
                     tabs.forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // Show target content
                     const contents = document.querySelectorAll('.division-content');
                     contents.forEach(content => content.classList.remove('active'));
                     
@@ -2104,9 +2759,7 @@
             });
         }
 
-        // Render Price Tables
         function renderPriceTables() {
-            // Render chemical parameters table
             const chemicalTableBody = document.getElementById('chemical-table-body');
             if (chemicalTableBody) {
                 let chemicalHtml = '';
@@ -2127,7 +2780,6 @@
                 chemicalTableBody.innerHTML = chemicalHtml;
             }
             
-            // Render microbiological parameters table
             const microTableBody = document.getElementById('microbiological-table-body');
             if (microTableBody) {
                 let microHtml = '';
@@ -2149,9 +2801,7 @@
             }
         }
 
-        // Render Parameter Cards
         function renderParameterCards() {
-            // Render chemical parameter cards
             const chemicalCardsContainer = document.getElementById('chemical-cards-container');
             if (chemicalCardsContainer) {
                 let chemicalCardsHtml = '';
@@ -2177,7 +2827,6 @@
                 chemicalCardsContainer.innerHTML = chemicalCardsHtml;
             }
             
-            // Render microbiological parameter cards
             const microCardsContainer = document.getElementById('microbiological-cards-container');
             if (microCardsContainer) {
                 let microCardsHtml = '';
@@ -2193,7 +2842,7 @@
                         <div class="parameter-footer">
                             <div class="parameter-price">${param.price}</div>
                             <div class="parameter-status micro-status">
-                                <i class="fas fa-plus-circle"></i> Tambahan (Add-on)
+                                <i class="fas fa-tags"></i> Add-on (Berbayar)
                             </div>
                         </div>
                     </div>
@@ -2204,35 +2853,39 @@
             }
         }
 
-        // Initialize View Toggle
         function initViewToggle() {
             const toggleButtons = document.querySelectorAll('.view-toggle-btn');
             const cardView = document.querySelector('.card-view');
             const tableView = document.querySelector('.table-view');
             
-            // Check screen width and set initial view
-            const isMobile = window.innerWidth <= 768;
-            if (isMobile) {
-                cardView.style.display = 'block';
-                tableView.style.display = 'none';
-                toggleButtons[0].classList.add('active');
-                toggleButtons[1].classList.remove('active');
-            } else {
-                cardView.style.display = 'none';
-                tableView.style.display = 'block';
-                toggleButtons[0].classList.remove('active');
-                toggleButtons[1].classList.add('active');
+            // Set initial view berdasarkan screen width
+            function setInitialView() {
+                const isMobile = window.innerWidth <= 768;
+                
+                if (isMobile) {
+                    // Force card view di mobile
+                    cardView.style.display = 'block';
+                    tableView.style.display = 'none';
+                    toggleButtons[0].classList.add('active');
+                    toggleButtons[1].classList.remove('active');
+                } else {
+                    // Force table view di desktop
+                    cardView.style.display = 'none';
+                    tableView.style.display = 'block';
+                    toggleButtons[0].classList.remove('active');
+                    toggleButtons[1].classList.add('active');
+                }
             }
+            
+            setInitialView();
             
             toggleButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const view = this.getAttribute('data-view');
                     
-                    // Update active button
                     toggleButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // Show selected view
                     if (view === 'card') {
                         cardView.style.display = 'block';
                         tableView.style.display = 'none';
@@ -2245,37 +2898,29 @@
                 });
             });
             
-            // Update on window resize
+            // Force reset ke default view saat resize
             window.addEventListener('resize', function() {
                 const isMobileNow = window.innerWidth <= 768;
                 
                 if (isMobileNow) {
-                    // If on mobile and table view is active, switch to card view
-                    if (toggleButtons[1].classList.contains('active')) {
-                        toggleButtons[0].classList.add('active');
-                        toggleButtons[1].classList.remove('active');
-                        cardView.style.display = 'block';
-                        tableView.style.display = 'none';
-                        cardView.style.animation = 'fadeIn 0.5s';
-                    }
+                    // Force card view di mobile
+                    cardView.style.display = 'block';
+                    tableView.style.display = 'none';
+                    toggleButtons[0].classList.add('active');
+                    toggleButtons[1].classList.remove('active');
                 } else {
-                    // If on desktop and card view is active, switch to table view
-                    if (toggleButtons[0].classList.contains('active')) {
-                        toggleButtons[0].classList.remove('active');
-                        toggleButtons[1].classList.add('active');
-                        cardView.style.display = 'none';
-                        tableView.style.display = 'block';
-                        tableView.style.animation = 'fadeIn 0.5s';
-                    }
+                    // Force table view di desktop
+                    cardView.style.display = 'none';
+                    tableView.style.display = 'block';
+                    toggleButtons[0].classList.remove('active');
+                    toggleButtons[1].classList.add('active');
                 }
             });
         }
 
-        // Initialize Mobile CTA
         function initMobileCTA() {
             const mobileCTA = document.querySelector('.mobile-cta');
             
-            // Show/hide based on scroll
             window.addEventListener('scroll', function() {
                 if (window.innerWidth <= 768) {
                     if (window.scrollY > 300) {
@@ -2287,9 +2932,7 @@
             });
         }
 
-        // Initialize Navigation
         function initNavigation() {
-            // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -2299,13 +2942,11 @@
                     
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        // Update active nav link
                         document.querySelectorAll('.nav-link').forEach(link => {
                             link.classList.remove('active');
                         });
                         this.classList.add('active');
                         
-                        // Scroll to target
                         window.scrollTo({
                             top: targetElement.offsetTop - 80,
                             behavior: 'smooth'
@@ -2314,7 +2955,6 @@
                 });
             });
             
-            // Update active nav link on scroll
             window.addEventListener('scroll', function() {
                 const sections = document.querySelectorAll('section[id]');
                 const scrollPos = window.scrollY + 100;
@@ -2336,7 +2976,6 @@
             });
         }
 
-        // Initialize Form Submission
         function initFormSubmission() {
             const form = document.getElementById('bookingForm');
             if (!form) return;
@@ -2344,7 +2983,6 @@
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Get form data
                 const formData = {
                     name: document.getElementById('name').value,
                     company: document.getElementById('company').value,
@@ -2352,39 +2990,37 @@
                     phone: document.getElementById('phone').value,
                     division: document.getElementById('division').value,
                     marketingContact: document.getElementById('marketingContact').value,
-                    message: document.getElementById('message').value,
-                    date: new Date().toLocaleString('id-ID')
+                    message: document.getElementById('message').value
                 };
                 
-                // Simulate form submission (in real implementation, use EmailJS or Formspree)
-                alert(`Terima kasih ${formData.name}! Permintaan penawaran untuk divisi ${formData.division} telah diterima. ${formData.marketingContact} akan menghubungi Anda dalam 1x24 jam.`);
+                // Redirect ke WhatsApp dengan data pre-filled
+                const contactOption = document.getElementById('marketingContact').value;
+                if (contactOption) {
+                    const [contactName, contactPhone] = contactOption.split(',');
+                    const phoneNumber = contactPhone || '+6285693363566';
+                    
+                    const message = `Halo, saya ${formData.name} dari ${formData.company}.\nSaya ingin konsultasi tentang layanan ${formData.division}.\n\nEmail: ${formData.email}\nTelepon: ${formData.phone}\n\nPesan: ${formData.message || 'Tidak ada pesan tambahan'}`;
+                    
+                    const encodedMessage = encodeURIComponent(message);
+                    const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodedMessage}`;
+                    
+                    window.open(whatsappUrl, '_blank');
+                }
                 
-                // Reset form
                 form.reset();
-                
-                // Scroll to top
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
             });
         }
 
-        // Initialize Footer Links
         function initFooterLinks() {
-            // Footer division links
             document.querySelectorAll('a[data-division]').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     
                     const division = this.getAttribute('data-division');
-                    
-                    // Switch to the corresponding division tab
                     const tab = document.querySelector(`.division-tab[data-target="${division}"]`);
                     if (tab) {
                         tab.click();
                         
-                        // Scroll to divisions section
                         const divisionsSection = document.getElementById('divisions');
                         if (divisionsSection) {
                             window.scrollTo({
@@ -2397,12 +3033,10 @@
             });
         }
 
-        // Add ripple effect to buttons
         function addRippleEffect() {
             document.addEventListener('click', function(e) {
-                // Check if clicked element is a button or card
                 const target = e.target;
-                const button = target.closest('.btn, .parameter-card, .contact-card, .division-tab, .team-card, .brand-card, .location-card');
+                const button = target.closest('.btn, .parameter-card, .contact-card, .division-tab, .team-card, .brand-card, .location-card, .expand-btn');
                 
                 if (button) {
                     const ripple = document.createElement('span');
@@ -2418,7 +3052,6 @@
                     
                     button.appendChild(ripple);
                     
-                    // Remove ripple after animation
                     setTimeout(() => {
                         ripple.remove();
                     }, 600);
@@ -2426,16 +3059,12 @@
             });
         }
 
-        // Initialize contact interactions
         function initContactInteractions() {
-            // Make all contact items clickable
             document.querySelectorAll('.contact-value').forEach(el => {
                 const text = el.textContent.trim();
                 if (text.includes('@')) {
-                    // Email
                     el.parentElement.href = `mailto:${text}`;
                 } else if (text.replace(/\D/g, '').length >= 8) {
-                    // Phone number
                     const phone = text.replace(/\D/g, '');
                     if (phone.startsWith('0')) {
                         el.parentElement.href = `tel:+62${phone.substring(1)}`;
@@ -2448,13 +3077,11 @@
             });
         }
 
-        // Helper function to show specific division
         window.showDivision = function(divisionId) {
             const tab = document.querySelector(`.division-tab[data-target="${divisionId}"]`);
             if (tab) {
                 tab.click();
                 
-                // Scroll to divisions section
                 const divisionsSection = document.getElementById('divisions');
                 if (divisionsSection) {
                     window.scrollTo({
@@ -2465,24 +3092,18 @@
             }
         };
         
-        // Handle small screen compatibility
         function handleSmallScreen() {
             if (window.innerWidth <= 360) {
-                // Adjust font sizes for very small screens
                 document.body.style.fontSize = '0.95rem';
                 
-                // Ensure all interactive elements are touch-friendly
-                document.querySelectorAll('.btn, .nav-link, .contact-link').forEach(el => {
+                document.querySelectorAll('.btn, .nav-link, .contact-link, .expand-btn').forEach(el => {
                     el.style.minHeight = '44px';
                     el.style.padding = '12px 16px';
                 });
             }
         }
         
-        // Initial call
         handleSmallScreen();
-        
-        // Listen for resize
         window.addEventListener('resize', handleSmallScreen);
     </script>
 </body>
